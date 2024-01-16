@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsvckevjwexab"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2m2x2"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o217v"]
+polygon = PackedVector2Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwho"]
+
+[node name="MeshInstance2D" type="MeshInstance2D"]
+mesh = SubResource("BoxMesh_2m2x2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(1, 1)
+occluder = SubResource("OccluderPolygon2D_o217v")
+
+[node name="Pillar" type="StaticBody2D" parent="."]
+modulate = Color(0, 0.219608, 0.192157, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar"]
+scale = Vector2(0.05, 0.05)
+shape = SubResource("RectangleShape2D_hbwho")

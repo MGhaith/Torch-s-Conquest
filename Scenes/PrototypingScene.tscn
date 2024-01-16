@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmoddp4uc0wuu"]
+
+[ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
+[ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
+
+[sub_resource type="TileSet" id="TileSet_kyuoi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8x5ma"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_02rmx"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource("TileSet_kyuoi")
+format = 2
+
+[node name="Torch" parent="." instance=ExtResource("1_c0evi")]
+
+[node name="Background" type="MeshInstance2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_8x5ma")
+position = Vector2(47.5, -13)
+scale = Vector2(1345, 774)
+mesh = SubResource("BoxMesh_02rmx")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Pillar" parent="Walls" instance=ExtResource("3_4ld1e")]
+position = Vector2(-138.5, 6)
+scale = Vector2(73, 104)
+
+[node name="Pillar2" parent="Walls" instance=ExtResource("3_4ld1e")]
+position = Vector2(263.703, -33.847)
+scale = Vector2(-66.4065, 400.306)
+
+[node name="Pillar3" parent="Walls" instance=ExtResource("3_4ld1e")]
+position = Vector2(-75.0605, -145.438)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar4" parent="Walls" instance=ExtResource("3_4ld1e")]
+position = Vector2(15, 157)
+scale = Vector2(182, 78.1328)
