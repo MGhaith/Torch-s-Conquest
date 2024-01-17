@@ -1,47 +1,167 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=12 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
-
-[sub_resource type="TileSet" id="TileSet_kyuoi"]
+[ext_resource type="PackedScene" uid="uid://bq4vupof37t78" path="res://Prefabs/Exit.tscn" id="3_yu6oo"]
+[ext_resource type="Script" path="res://Scripts/FinishLevel.gd" id="4_nbs77"]
+[ext_resource type="PackedScene" uid="uid://b6vyrmijpoc2v" path="res://Prefabs/Key.tscn" id="5_25xcw"]
+[ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="6_8fhp0"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="7_y00o8"]
+[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8x5ma"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_02rmx"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhchm"]
 
-[node name="TileMap" type="TileMap" parent="."]
-visible = false
-tile_set = SubResource("TileSet_kyuoi")
-format = 2
+[node name="PrototypeLevel" type="Node2D"]
 
 [node name="Torch" parent="." instance=ExtResource("1_c0evi")]
+position = Vector2(215, -22)
 
 [node name="Background" type="MeshInstance2D" parent="."]
 z_index = -1
 material = SubResource("CanvasItemMaterial_8x5ma")
-position = Vector2(47.5, -13)
+position = Vector2(43, -14)
 scale = Vector2(1345, 774)
 mesh = SubResource("BoxMesh_02rmx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.105882, 0.105882, 0.105882, 1)
 
-[node name="Walls" type="Node" parent="."]
+[node name="level" type="Node" parent="."]
 
-[node name="Pillar" parent="Walls" instance=ExtResource("3_4ld1e")]
-position = Vector2(-138.5, 6)
+[node name="OuterWalls" type="Node" parent="level"]
+
+[node name="Pillar2" parent="level/OuterWalls" instance=ExtResource("3_4ld1e")]
+position = Vector2(734, -10)
+rotation = -3.14159
+scale = Vector2(66.4065, -888.026)
+
+[node name="Pillar4" parent="level/OuterWalls" instance=ExtResource("3_4ld1e")]
+position = Vector2(44, -435)
+scale = Vector2(1356, 78.1328)
+
+[node name="Pillar5" parent="level/OuterWalls" instance=ExtResource("3_4ld1e")]
+position = Vector2(-636, 229.019)
+rotation = 3.14159
+scale = Vector2(66.4065, -401.988)
+
+[node name="Pillar6" parent="level/OuterWalls" instance=ExtResource("3_4ld1e")]
+position = Vector2(45.9999, 411)
+scale = Vector2(1380, 78.1328)
+
+[node name="Pillar7" parent="level/OuterWalls" instance=ExtResource("3_4ld1e")]
+position = Vector2(-636, -278.137)
+rotation = 3.14159
+scale = Vector2(66.4065, -403.67)
+
+[node name="Room1" type="Node" parent="level"]
+
+[node name="Pillar" parent="level/Room1" instance=ExtResource("3_4ld1e")]
+position = Vector2(-372, 304)
+scale = Vector2(30.5, 161)
+
+[node name="Pillar2" parent="level/Room1" instance=ExtResource("3_4ld1e")]
+position = Vector2(-562.5, 214)
+scale = Vector2(99, 33.5)
+
+[node name="Pillar3" parent="level/Room1" instance=ExtResource("3_4ld1e")]
+position = Vector2(-406.219, 214)
+scale = Vector2(101.562, 33.5)
+
+[node name="Pillars" type="Node" parent="level"]
+
+[node name="Pillar2" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(566, 248)
 scale = Vector2(73, 104)
 
-[node name="Pillar2" parent="Walls" instance=ExtResource("3_4ld1e")]
-position = Vector2(263.703, -33.847)
-scale = Vector2(-66.4065, 400.306)
-
-[node name="Pillar3" parent="Walls" instance=ExtResource("3_4ld1e")]
-position = Vector2(-75.0605, -145.438)
+[node name="Pillar3" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-394.939, -96)
 scale = Vector2(30.1211, 29.125)
 
-[node name="Pillar4" parent="Walls" instance=ExtResource("3_4ld1e")]
-position = Vector2(15, 157)
-scale = Vector2(182, 78.1328)
+[node name="Pillar4" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-294.939, -96)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar5" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-194.939, -96)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar6" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-494.939, -96)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar7" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-1.87892, -98.4375)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar8" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(98.1211, -98.4375)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar9" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(198.121, -98.4375)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar10" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-101.879, -98.4375)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar11" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-394.939, 59)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar12" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-294.939, 59)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar13" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-194.939, 59)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar14" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-494.939, 59)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar15" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-1.87892, 56.5625)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar16" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(98.1211, 56.5625)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar17" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(198.121, 56.5625)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Pillar18" parent="level/Pillars" instance=ExtResource("3_4ld1e")]
+position = Vector2(-101.879, 56.5625)
+scale = Vector2(30.1211, 29.125)
+
+[node name="Door_Exit" type="Node" parent="level"]
+
+[node name="Exit" parent="level/Door_Exit" instance=ExtResource("3_yu6oo")]
+position = Vector2(-636, -24.5)
+scale = Vector2(37, 119)
+
+[node name="Win_Check" type="ShapeCast2D" parent="."]
+position = Vector2(-643, 15)
+shape = SubResource("RectangleShape2D_xhchm")
+target_position = Vector2(1, -80)
+max_results = 1
+script = ExtResource("4_nbs77")
+
+[node name="Key" parent="." instance=ExtResource("5_25xcw")]
+position = Vector2(-575, 299)
+
+[node name="Wood" parent="." instance=ExtResource("6_8fhp0")]
+position = Vector2(-417, 307)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("7_y00o8")
+ost = ExtResource("8_4lxou")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
