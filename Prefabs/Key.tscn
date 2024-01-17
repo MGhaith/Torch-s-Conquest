@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6vyrmijpoc2v"]
+
+[ext_resource type="Texture2D" uid="uid://coe2khrs43g5n" path="res://Assets/object_key_green.png" id="1_vmdjw"]
+[ext_resource type="Script" path="res://Scripts/Key.gd" id="2_4ncv7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fks2e"]
+radius = 14.0
+height = 46.0
+
+[node name="Key" type="Sprite2D"]
+texture = ExtResource("1_vmdjw")
+script = ExtResource("2_4ncv7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_fks2e")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
