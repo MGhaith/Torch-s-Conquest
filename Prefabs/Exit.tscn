@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsvckevjwexab"]
+[gd_scene load_steps=5 format=3 uid="uid://bq4vupof37t78"]
+
+[ext_resource type="Script" path="res://Scripts/Exit.gd" id="1_6owf6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2m2x2"]
 
@@ -9,6 +11,7 @@ polygon = PackedVector2Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5)
 
 [node name="MeshInstance2D" type="MeshInstance2D"]
 mesh = SubResource("BoxMesh_2m2x2")
+script = ExtResource("1_6owf6")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_o217v")
