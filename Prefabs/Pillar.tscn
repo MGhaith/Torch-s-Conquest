@@ -11,7 +11,6 @@ polygon = PackedVector2Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5)
 mesh = SubResource("BoxMesh_2m2x2")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-scale = Vector2(1, 1)
 occluder = SubResource("OccluderPolygon2D_o217v")
 
 [node name="Pillar" type="StaticBody2D" parent="."]

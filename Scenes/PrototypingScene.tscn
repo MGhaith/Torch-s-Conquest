@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=7 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
+[ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Scenes/Monsters/shadow.tscn" id="3_pyxjf"]
 
 [sub_resource type="TileSet" id="TileSet_kyuoi"]
 
@@ -27,6 +28,9 @@ mesh = SubResource("BoxMesh_02rmx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="Shadow" parent="." instance=ExtResource("3_pyxjf")]
+position = Vector2(-278, -107)
 
 [node name="Walls" type="Node" parent="."]
 

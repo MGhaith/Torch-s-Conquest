@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7c3x0bka3wot"]
+
+[ext_resource type="Texture2D" uid="uid://b8qpm4gcnletc" path="res://Assets/Monster/Character_sheet.png" id="1_7o3us"]
+[ext_resource type="Script" path="res://Scenes/Monsters/shadow.gd" id="1_p4oeg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xens"]
+atlas = ExtResource("1_7o3us")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujpt4"]
+atlas = ExtResource("1_7o3us")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl4cc"]
+atlas = ExtResource("1_7o3us")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f2h5"]
+atlas = ExtResource("1_7o3us")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1bqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xens")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujpt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl4cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f2h5")
+}],
+"loop": true,
+"name": &"Enemy",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xtp76"]
+radius = 38.0132
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wk3w"]
+radius = 81.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pilcr"]
+radius = 102.005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apfho"]
+
+[node name="Shadow" type="CharacterBody2D"]
+script = ExtResource("1_p4oeg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e1bqp")
+animation = &"Enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xtp76")
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_7wk3w")
+
+[node name="Damage_Radius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_Radius"]
+shape = SubResource("CircleShape2D_pilcr")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_apfho")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
