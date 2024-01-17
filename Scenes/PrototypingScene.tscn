@@ -2,12 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
+[ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Scenes/Monsters/shadow.tscn" id="3_pyxjf"]
 [ext_resource type="PackedScene" uid="uid://bq4vupof37t78" path="res://Prefabs/Exit.tscn" id="3_yu6oo"]
 [ext_resource type="Script" path="res://Scripts/FinishLevel.gd" id="4_nbs77"]
 [ext_resource type="PackedScene" uid="uid://b6vyrmijpoc2v" path="res://Prefabs/Key.tscn" id="5_25xcw"]
 [ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="6_8fhp0"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="7_y00o8"]
 [ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
+
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8x5ma"]
 
@@ -29,6 +31,10 @@ mesh = SubResource("BoxMesh_02rmx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.105882, 0.105882, 0.105882, 1)
+
+
+[node name="Shadow" parent="." instance=ExtResource("3_pyxjf")]
+position = Vector2(-278, -107)
 
 [node name="level" type="Node" parent="."]
 

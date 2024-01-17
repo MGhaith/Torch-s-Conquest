@@ -67,6 +67,10 @@ func _on_flashing_light_timer_timeout():
 	elif rand_amt > 0.75:
 		light.energy = 0.75
 	flashingTimer.start(rand_amt / randf_range(1,20))
+	
+# Method to identifies this script as a player
+func is_player():
+	pass
 
 # Health decrease
 func _on_health_decrease_timer_timeout():

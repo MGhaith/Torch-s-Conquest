@@ -27,6 +27,10 @@ scale = Vector2(20, 20)
 mesh = SubResource("PrismMesh_u6r2v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -625
+limit_top = -400
+limit_right = 720
+limit_bottom = 373
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)
