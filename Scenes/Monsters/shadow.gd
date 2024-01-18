@@ -8,7 +8,7 @@ var player
 func _ready():
 	$AnimatedSprite2D.play("Enemy")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player_in_area:
 		position += (player.position - position) / speed
 

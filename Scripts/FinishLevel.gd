@@ -1,5 +1,6 @@
 extends ShapeCast2D
 
+@export var gameManager : Node
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -7,4 +8,5 @@ func _process(_delta):
 		if get_collider(0).is_in_group("Player"):
 			var player = get_collider(0)
 			player.healthTimer.stop()
-			printt("Go To Next Level")
+			player.canMove = false
+			gameManager.EndLevel("You Win")

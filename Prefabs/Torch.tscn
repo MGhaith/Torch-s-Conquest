@@ -4,15 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://d2ufn0oqcu6s6" path="res://Assets/flashlight_reverse.png" id="2_fd6el"]
 [ext_resource type="Texture2D" uid="uid://df3flbiqfbbv2" path="res://Assets/rpgcritter update formatted transparent.png" id="3_ppy7a"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_u6r2v"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwtxm"]
 
-[node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer") groups=["Player"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7omj6"]
+radius = 225.036
+
+[node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "flameAreaCollision") groups=["Player"]]
 script = ExtResource("1_pqhpa")
 light = NodePath("PointLight2D")
 flashingTimer = NodePath("FlashingLightTimer")
 healthTimer = NodePath("HealthDecreaseTimer")
+flameAreaCollision = NodePath("FlameArea/CollisionShape2D")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.945098, 0.262745, 0.164706, 1)
@@ -20,17 +22,7 @@ shadow_enabled = true
 texture = ExtResource("2_fd6el")
 texture_scale = 2.0
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-visible = false
-modulate = Color(0.996078, 0.25098, 0.25098, 1)
-scale = Vector2(20, 20)
-mesh = SubResource("PrismMesh_u6r2v")
-
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -625
-limit_top = -400
-limit_right = 720
-limit_bottom = 373
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)
@@ -51,6 +43,11 @@ vframes = 7
 frame = 13
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="FlameArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameArea"]
+shape = SubResource("CircleShape2D_7omj6")
 
 [connection signal="timeout" from="FlashingLightTimer" to="." method="_on_flashing_light_timer_timeout"]
 [connection signal="timeout" from="HealthDecreaseTimer" to="." method="_on_health_decrease_timer_timeout"]

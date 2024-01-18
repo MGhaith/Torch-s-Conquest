@@ -320,6 +320,7 @@ position = Vector2(215, -22)
 gameManager = NodePath("../GameManager")
 
 [node name="Background" type="MeshInstance2D" parent="."]
+visible = false
 z_index = -1
 material = SubResource("CanvasItemMaterial_8x5ma")
 position = Vector2(43, -14)
