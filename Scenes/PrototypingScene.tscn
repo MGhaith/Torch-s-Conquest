@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=19 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
-[ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Scenes/Monsters/shadow.tscn" id="3_pyxjf"]
+[ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="3_pyxjf"]
 [ext_resource type="PackedScene" uid="uid://bq4vupof37t78" path="res://Prefabs/Exit.tscn" id="3_yu6oo"]
 [ext_resource type="Script" path="res://Scripts/FinishLevel.gd" id="4_nbs77"]
 [ext_resource type="PackedScene" uid="uid://b6vyrmijpoc2v" path="res://Prefabs/Key.tscn" id="5_25xcw"]
@@ -22,6 +22,12 @@
 [sub_resource type="BoxMesh" id="BoxMesh_02rmx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhchm"]
+
+[sub_resource type="Curve2D" id="Curve2D_7ro20"]
+_data = {
+"points": PackedVector2Array(-135.417, 57.0175, 135.417, -57.0175, -526.204, -246.972, -30.2906, -30.2906, 30.2906, 30.2906, -241.204, -248.972, -0.890899, -45.4358, 0.890899, 45.4358, -248.204, -106.972, 20.4907, -32.9633, -20.4907, 32.9633, -249.204, 12.028, 35.6359, 16.9271, -35.6359, -16.9271, -533.204, -1.97198, -1.7818, -13.3635, 1.7818, 13.3635, -558.204, -112.972, -37.4177, 28.5088, 37.4177, -28.5088, -526.204, -246.972)
+}
+point_count = 7
 
 [node name="PrototypeLevel" type="Node2D"]
 position = Vector2(615.204, 446.972)
@@ -322,15 +328,12 @@ gameManager = NodePath("../GameManager")
 [node name="Background" type="MeshInstance2D" parent="."]
 z_index = -1
 material = SubResource("CanvasItemMaterial_8x5ma")
-position = Vector2(43, -14)
+position = Vector2(42.796, 3.02802)
 scale = Vector2(1345, 774)
 mesh = SubResource("BoxMesh_02rmx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.105882, 0.105882, 0.105882, 1)
-
-[node name="Shadow" parent="." instance=ExtResource("3_pyxjf")]
-position = Vector2(-278, -107)
 
 [node name="Win_Check" type="ShapeCast2D" parent="." node_paths=PackedStringArray("gameManager")]
 position = Vector2(-643, 15)
@@ -345,6 +348,18 @@ position = Vector2(-575, 299)
 
 [node name="Wood" parent="." instance=ExtResource("6_8fhp0")]
 position = Vector2(-417, 307)
+
+[node name="EnemyPatrolPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7ro20")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPatrolPath"]
+position = Vector2(-526.204, -246.972)
+rotation = -0.398522
+rotates = false
+
+[node name="Enemy" parent="EnemyPatrolPath/PathFollow2D" instance=ExtResource("3_pyxjf")]
+position = Vector2(0.467407, -0.195999)
+rotation = 0.398522
 
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/PlayButton" to="UI/MainMenu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/LevelsButton" to="UI/MainMenu" method="_on_options_button_pressed"]
