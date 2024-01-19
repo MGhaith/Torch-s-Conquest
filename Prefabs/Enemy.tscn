@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/StateMachine.gd" id="3_16k50"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Chase.gd" id="4_61gv0"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Patrol.gd" id="5_imk81"]
+[ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Attack.gd" id="6_tavy4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xens"]
 atlas = ExtResource("1_7o3us")
@@ -46,10 +47,7 @@ animations = [{
 radius = 23.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wk3w"]
-radius = 81.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pilcr"]
-radius = 102.005
+radius = 50.0025
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("enemy", "animator")]
 script = ExtResource("1_p4oeg")
@@ -69,11 +67,6 @@ shape = SubResource("CircleShape2D_xtp76")
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_7wk3w")
 
-[node name="Damage_Radius" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_Radius"]
-shape = SubResource("CircleShape2D_pilcr")
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_16k50")
 initial_state = NodePath("Patrol")
@@ -88,5 +81,21 @@ script = ExtResource("5_imk81")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "Delay", "enemy", "animator")]
+script = ExtResource("6_tavy4")
+AttackHitCooldown = NodePath("../../AttackHitCooldown")
+Delay = NodePath("../../Delay")
+enemy = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="AttackHitCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Delay" type="Timer" parent="."]
+
 [connection signal="area_entered" from="detection_area" to="StateMachine/Patrol" method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_area_exited"]
+[connection signal="body_entered" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="StateMachine/Attack" method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="AttackHitCooldown" to="StateMachine/Attack" method="_on_attack_hit_cooldown_timeout"]
+[connection signal="timeout" from="Delay" to="StateMachine/Attack" method="_on_delay_timeout"]
