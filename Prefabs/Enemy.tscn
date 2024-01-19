@@ -84,18 +84,15 @@ animator = NodePath("../../AnimatedSprite2D")
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "Delay", "enemy", "animator")]
 script = ExtResource("6_tavy4")
 AttackHitCooldown = NodePath("../../AttackHitCooldown")
-Delay = NodePath("../../Delay")
+Delay = NodePath("")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 
 [node name="AttackHitCooldown" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Delay" type="Timer" parent="."]
-
 [connection signal="area_entered" from="detection_area" to="StateMachine/Patrol" method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_area_exited"]
 [connection signal="body_entered" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="StateMachine/Attack" method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="AttackHitCooldown" to="StateMachine/Attack" method="_on_attack_hit_cooldown_timeout"]
-[connection signal="timeout" from="Delay" to="StateMachine/Attack" method="_on_delay_timeout"]
