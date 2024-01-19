@@ -79,19 +79,19 @@ func removeHealth(value : float):
 func SkillA():
 	light.texture_scale = 3
 	damageHealth = 5
-	flameAreaCollision.transform.scaled(Vector2(1.5, 1.5))
+	flameAreaCollision.set_scale(Vector2(1.5, 1.5))
 
 #SkillB
 func SkillB():
 	light.texture_scale = 1
 	damageHealth = 1
-	flameAreaCollision.transform.scaled(Vector2(0.5, 0.5))
+	flameAreaCollision.set_scale(Vector2(0.5, 0.5))
 
 # No-Skill reset
 func SkillReset():
 	light.texture_scale = 2
 	damageHealth = 2
-	flameAreaCollision.transform.scaled(Vector2(1, 1))
+	flameAreaCollision.set_scale(Vector2(1, 1))
 
 # Flashing Light effect
 func _on_flashing_light_timer_timeout():

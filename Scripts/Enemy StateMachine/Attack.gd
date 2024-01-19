@@ -32,7 +32,7 @@ func _on_attack_hit_cooldown_timeout():
 	player.removeHealth(10)
 
 
-func _on_detection_area_body_exited(body):
+func _on_detection_area_body_exited(_body):
 	player_in_area = false
 	AttackHitCooldown.stop()
 	transitioned.emit("chase")
