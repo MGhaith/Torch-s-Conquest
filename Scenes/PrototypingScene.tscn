@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=20 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/EndGameMenu.gd" id="7_6ispx"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="7_y00o8"]
 [ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
+[ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="13_oqhmc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucfo7"]
 
@@ -159,6 +160,7 @@ position = Vector2(-20.7963, 422.472)
 scale = Vector2(37, 119)
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="Control" parent="UI"]
@@ -324,6 +326,9 @@ layout_mode = 2
 [node name="Torch" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("1_c0evi")]
 position = Vector2(215, -22)
 gameManager = NodePath("../GameManager")
+
+[node name="InteractableTorch" parent="." instance=ExtResource("13_oqhmc")]
+position = Vector2(519.796, -160.972)
 
 [node name="Background" type="MeshInstance2D" parent="."]
 z_index = -1

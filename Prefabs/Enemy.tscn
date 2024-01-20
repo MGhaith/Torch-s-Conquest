@@ -81,10 +81,9 @@ script = ExtResource("5_imk81")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "Delay", "enemy", "animator")]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "enemy", "animator")]
 script = ExtResource("6_tavy4")
 AttackHitCooldown = NodePath("../../AttackHitCooldown")
-Delay = NodePath("")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 
