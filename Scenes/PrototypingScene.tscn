@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=18 format=3 uid="uid://bmoddp4uc0wuu"]
 
+[ext_resource type="PackedScene" uid="uid://bj0mxky1dt55n" path="res://Prefabs/game_manager.tscn" id="1_0hn31"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="3_pyxjf"]
@@ -10,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="6_8fhp0"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="6_pggph"]
 [ext_resource type="Script" path="res://Scripts/EndGameMenu.gd" id="7_6ispx"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="7_y00o8"]
-[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucfo7"]
 
@@ -32,14 +31,7 @@ point_count = 7
 [node name="PrototypeLevel" type="Node2D"]
 position = Vector2(615.204, 446.972)
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endScreen", "player")]
-script = ExtResource("7_y00o8")
-endScreen = NodePath("../UI/GameOverMenu")
-player = NodePath("../Torch")
-ost = ExtResource("8_4lxou")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
-position = Vector2(615.204, 446.972)
+[node name="GameManager" parent="." instance=ExtResource("1_0hn31")]
 
 [node name="level" type="Node" parent="."]
 
@@ -181,7 +173,7 @@ show_percentage = false
 script = ExtResource("5_31yyw")
 player = NodePath("../../../Torch")
 
-[node name="MainMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameManager")]
+[node name="MainMenu" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,7 +181,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_pggph")
-gameManager = NodePath("../../GameManager")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/MainMenu"]
 modulate = Color(0, 0, 0, 1)
@@ -242,7 +233,7 @@ theme_override_font_sizes/font_size = 32
 text = "Exit
 "
 
-[node name="GameOverMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameManager")]
+[node name="GameOverMenu" type="Control" parent="UI"]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -251,7 +242,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_6ispx")
-gameManager = NodePath("../../GameManager")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/GameOverMenu"]
 modulate = Color(0, 0, 0, 1)
@@ -321,9 +311,8 @@ text = "Exit
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 
-[node name="Torch" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("1_c0evi")]
+[node name="Torch" parent="." instance=ExtResource("1_c0evi")]
 position = Vector2(215, -22)
-gameManager = NodePath("../GameManager")
 
 [node name="Background" type="MeshInstance2D" parent="."]
 z_index = -1
@@ -335,13 +324,12 @@ mesh = SubResource("BoxMesh_02rmx")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.105882, 0.105882, 0.105882, 1)
 
-[node name="Win_Check" type="ShapeCast2D" parent="." node_paths=PackedStringArray("gameManager")]
+[node name="Win_Check" type="ShapeCast2D" parent="."]
 position = Vector2(-643, 15)
 shape = SubResource("RectangleShape2D_xhchm")
 target_position = Vector2(1, -80)
 max_results = 1
 script = ExtResource("4_nbs77")
-gameManager = NodePath("../GameManager")
 
 [node name="Key" parent="." instance=ExtResource("5_25xcw")]
 position = Vector2(-575, 299)

@@ -23,11 +23,11 @@ func _process(_delta):
 	# Check if the player is still alive
 	if playerHealth > 0:
 		# Check for Skills action
-		if Input.is_action_just_pressed("SkillA") && !Input.is_action_pressed("SkillB"):
-			SkillA()
-		if Input.is_action_just_pressed("SkillB") && !Input.is_action_pressed("SkillA"):
+		if Input.is_action_just_pressed("Sprint") && !Input.is_action_pressed("SkillB"):
+			FireSprint()
+		if Input.is_action_just_pressed("SkillB") && !Input.is_action_pressed("Sprint"):
 			SkillB()
-		if (Input.is_action_just_released("SkillA") && !Input.is_action_pressed("SkillB")) or (Input.is_action_just_released("SkillB") && !Input.is_action_pressed("SkillA")):
+		if (Input.is_action_just_released("Sprint") && !Input.is_action_pressed("SkillB")) or (Input.is_action_just_released("SkillB") && !Input.is_action_pressed("Sprint")):
 			SkillReset()
 		
 		# Setting moving direction
@@ -70,16 +70,22 @@ func addHealth(value : float):
 func removeHealth(value : float):
 	playerHealth -= value
 	if playerHealth <= 0:
-		queue_free()
 		printt("player dead")
 	else:
 		printt("Damaged Health: ", value, " New Health: ", playerHealth)
 
-# SkillA
-func SkillA():
-	light.texture_scale = 3
-	damageHealth = 5
-	flameAreaCollision.set_scale(Vector2(1.5, 1.5))
+# SkillA (Not used anymore)
+#func SkillA():
+	#light.texture_scale = 3
+	#damageHealth = 5
+	#flameAreaCollision.set_scale(Vector2(1.5, 1.5))
+
+# Sprinting Skill
+func FireSprint():
+	light.texture_scale = 2.5
+	damageHealth = 3
+	flameAreaCollision.set_scale(Vector2(1.1, 1.1))
+	maxSpeed = 200
 
 #SkillB
 func SkillB():
@@ -92,6 +98,7 @@ func SkillReset():
 	light.texture_scale = 2
 	damageHealth = 2
 	flameAreaCollision.set_scale(Vector2(1, 1))
+	maxSpeed = 100
 
 # Flashing Light effect
 func _on_flashing_light_timer_timeout():

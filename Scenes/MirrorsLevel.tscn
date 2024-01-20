@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dumqlbqi86i45"]
+
+[ext_resource type="PackedScene" uid="uid://r0jrdhexip2t" path="res://Prefabs/LightBeam.tscn" id="1_856dc"]
+[ext_resource type="PackedScene" uid="uid://dbsilarcpfh7f" path="res://Prefabs/Mirror.tscn" id="2_aadec"]
+
+[node name="MirrorsLevel" type="Node2D"]
+
+[node name="LightBeam" parent="." instance=ExtResource("1_856dc")]
+
+[node name="Mirror" parent="." instance=ExtResource("2_aadec")]
+modulate = Color(0, 0.8, 0.8, 1)
+light_mask = 3
+visibility_layer = 3
+position = Vector2(211, 243)
+skew = 0.0174533
+
+[node name="Mirror2" parent="." instance=ExtResource("2_aadec")]
+position = Vector2(466, 77)
+
+[node name="Mirror3" parent="." instance=ExtResource("2_aadec")]
+position = Vector2(661, 317)
+
+[node name="Mirror4" parent="." instance=ExtResource("2_aadec")]
+position = Vector2(1082, 101)
+rotation = -2.76984
+
+[node name="Mirror5" parent="." instance=ExtResource("2_aadec")]
+position = Vector2(1029, 615)
+rotation = -0.980875
+
+[node name="Mirror6" parent="." instance=ExtResource("2_aadec")]
+position = Vector2(111, 504)
+rotation = 2.07345

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbsilarcpfh7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7b2o"]
+size = Vector2(143, 20)
+
+[node name="Mirror" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Mirror"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(61.5, 0)
+shape = SubResource("RectangleShape2D_f7b2o")
