@@ -11,18 +11,28 @@ radius = 225.036
 
 [node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "flameAreaCollision") groups=["Player"]]
 script = ExtResource("1_pqhpa")
-light = NodePath("PointLight2D")
+light = NodePath("Node2D/Shadow")
 flashingTimer = NodePath("FlashingLightTimer")
 healthTimer = NodePath("HealthDecreaseTimer")
 flameAreaCollision = NodePath("FlameArea/CollisionShape2D")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Shadow" type="PointLight2D" parent="Node2D"]
 color = Color(0.945098, 0.262745, 0.164706, 1)
 shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("2_fd6el")
+texture_scale = 2.0
+
+[node name="LightTexture" type="PointLight2D" parent="Node2D"]
+color = Color(0.945098, 0.262745, 0.164706, 1)
 texture = ExtResource("2_fd6el")
 texture_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(7, 7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)

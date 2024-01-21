@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvr37ggtaa74y"]
+
+[ext_resource type="Script" path="res://Scripts/interaction_manager.gd" id="1_1v0dr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0pfj"]
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_1v0dr")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+offset_right = 115.0
+offset_bottom = 23.0
+text = "[E] TO INTERACT"
+label_settings = SubResource("LabelSettings_u0pfj")
