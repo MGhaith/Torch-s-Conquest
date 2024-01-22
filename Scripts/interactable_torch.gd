@@ -5,6 +5,8 @@ extends StaticBody2D
 @export var light : PointLight2D
 @export var flashingTimer : Timer
 @export var interaction_area: InteractionArea
+@export var tile_map: TileMap
+@export var win_check_collision: CollisionShape2D
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
@@ -23,4 +25,5 @@ func _on_torch_light_timer_timeout():
 	
 	
 func _on_interact():
-	print("interact with torch")
+	tile_map.set_layer_enabled(3, true)
+	win_check_collision.disabled = false
