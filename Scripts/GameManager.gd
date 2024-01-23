@@ -3,7 +3,7 @@ extends Node
 @onready var audioPlayer : AudioStreamPlayer2D = $AudioStreamPlayer2D
 @export var endScreen : Control
 @export var player : CharacterBody2D
-@export var ost : AudioStreamWAV
+@export var ost : AudioStreamOggVorbis
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +13,7 @@ func _ready():
 func BeginLevel():
 	player.StartHealthTimer()
 	audioPlayer.set_stream(ost)
+	audioPlayer.volume_db = 10
 	audioPlayer.play()
 
 # End Level

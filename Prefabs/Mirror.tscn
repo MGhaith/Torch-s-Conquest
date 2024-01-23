@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbsilarcpfh7f"]
+[gd_scene load_steps=3 format=3 uid="uid://dbsilarcpfh7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7b2o"]
 size = Vector2(143, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lo51r"]
 
 [node name="Mirror" type="Node2D"]
 
@@ -10,5 +12,10 @@ size = Vector2(143, 20)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(61.5, 0)
 shape = SubResource("RectangleShape2D_f7b2o")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0.552941, 0.556863, 1)
+position = Vector2(0.375, 0)
+scale = Vector2(143.25, 20)
+mesh = SubResource("QuadMesh_lo51r")
