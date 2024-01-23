@@ -60,6 +60,7 @@ animation = &"Enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xtp76")
+disabled = true
 
 [node name="detection_area" type="Area2D" parent="."]
 

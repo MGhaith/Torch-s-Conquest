@@ -13,13 +13,13 @@ func _ready():
 func BeginLevel():
 	player.StartHealthTimer()
 	audioPlayer.set_stream(ost)
-	audioPlayer.play()
+	#audioPlayer.play()
 
 # End Level
 func EndLevel(endState : String):
 	endScreen.visible = true
 	endScreen.SetLabelText(endState)
-	audioPlayer.stop()
+	#audioPlayer.stop()
 
 
 # Restart Level
