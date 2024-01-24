@@ -36,23 +36,23 @@ func handle_level_changed(next_level_name : String):
 		"1":
 			target_level_name = "LevelName"
 		"level1":
-			target_level_name = "Level1"
+			target_level_name = "level_1"
 		"2":
 			target_level_name = "LevelName"
 		"level2":
-			target_level_name = "level2"
+			target_level_name = "level_2"
 		"3":
 			target_level_name = "LevelName"
 		"level3":
-			target_level_name = "level3"
+			target_level_name = "level_3"
 		"4":
 			target_level_name = "LevelName"
 		"level4":
-			target_level_name = "level4"
+			target_level_name = "level_4"
 		"5":
 			target_level_name = "LevelName"
 		"level5":
-			target_level_name = "level2"
+			target_level_name = "level_5"
 		"endscreen":
 			target_level_name = "ending"
 		_:
