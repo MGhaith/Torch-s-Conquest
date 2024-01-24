@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj0mxky1dt55n"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_xotvd"]
+[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="2_jgo0q"]
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("endScreen", "player")]
+script = ExtResource("1_xotvd")
+endScreen = NodePath("")
+player = NodePath("")
+ost = ExtResource("2_jgo0q")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(615.204, 446.972)

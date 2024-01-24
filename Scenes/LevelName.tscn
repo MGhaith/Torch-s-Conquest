@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://fsj86x36aabv"]
+
+[ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_ukxyt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6gfqs"]
+line_spacing = 5.0
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_wn75o"]
+line_spacing = 5.0
+font_size = 48
+
+[node name="LevelName" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ukxyt")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 373.0
+offset_top = 263.0
+offset_right = 778.0
+offset_bottom = 385.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LevelNumber" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "LevelNumber:"
+label_settings = SubResource("LabelSettings_6gfqs")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="LevelName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "LevelName"
+label_settings = SubResource("LabelSettings_wn75o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
