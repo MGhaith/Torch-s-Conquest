@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=18 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_4gwk2"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
+[ext_resource type="PackedScene" uid="uid://bj0mxky1dt55n" path="res://Prefabs/game_manager.tscn" id="2_vmuq7"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="3_pyxjf"]
+[ext_resource type="AudioStream" uid="uid://dqqkiifuxp7lr" path="res://Assets/Audio/dungeon002_0.ogg" id="3_xu57s"]
 [ext_resource type="PackedScene" uid="uid://bq4vupof37t78" path="res://Prefabs/Exit.tscn" id="3_yu6oo"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/FinishLevel.gd" id="4_nbs77"]
 [ext_resource type="PackedScene" uid="uid://b6vyrmijpoc2v" path="res://Prefabs/Key.tscn" id="5_25xcw"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="5_31yyw"]
 [ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="6_8fhp0"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="7_y00o8"]
 [ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="13_oqhmc"]
 
@@ -28,14 +29,12 @@ point_count = 7
 [node name="PrototypeLevel" type="Node2D"]
 position = Vector2(615.204, 446.972)
 script = ExtResource("1_4gwk2")
+next_level_name = "1"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("7_y00o8")
+[node name="GameManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_vmuq7")]
 player = NodePath("../Torch")
-ost = ExtResource("8_4lxou")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
-position = Vector2(615.204, 446.972)
+ost = ExtResource("3_xu57s")
+menuOst = ExtResource("8_4lxou")
 
 [node name="level" type="Node" parent="."]
 
@@ -159,6 +158,7 @@ visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,9 +178,8 @@ show_percentage = false
 script = ExtResource("5_31yyw")
 player = NodePath("../../../Torch")
 
-[node name="Torch" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("1_c0evi")]
+[node name="Torch" parent="." instance=ExtResource("1_c0evi")]
 position = Vector2(215, -22)
-gameManager = NodePath("../GameManager")
 
 [node name="InteractableTorch" parent="." instance=ExtResource("13_oqhmc")]
 position = Vector2(519.796, -160.972)
@@ -195,13 +194,12 @@ mesh = SubResource("BoxMesh_02rmx")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.105882, 0.105882, 0.105882, 1)
 
-[node name="Win_Check" type="ShapeCast2D" parent="." node_paths=PackedStringArray("gameManager")]
+[node name="Win_Check" type="ShapeCast2D" parent="."]
 position = Vector2(-643, 15)
 shape = SubResource("RectangleShape2D_xhchm")
 target_position = Vector2(1, -80)
 max_results = 1
 script = ExtResource("4_nbs77")
-gameManager = NodePath("../GameManager")
 
 [node name="Key" parent="." instance=ExtResource("5_25xcw")]
 position = Vector2(-575, 299)
