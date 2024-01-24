@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://df3flbiqfbbv2" path="res://Assets/rpgcritter update formatted transparent.png" id="3_ppy7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwtxm"]
+size = Vector2(15, 15.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7omj6"]
-radius = 225.036
+radius = 157.003
 
 [node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "flameAreaCollision") groups=["Player"]]
 script = ExtResource("1_pqhpa")
@@ -32,9 +33,10 @@ texture = ExtResource("2_fd6el")
 texture_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(7, 7)
+zoom = Vector2(6, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_pwtxm")
 

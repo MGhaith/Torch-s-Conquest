@@ -92,10 +92,14 @@ position = Vector2(0, -4)
 scale = Vector2(0.491299, 0.854838)
 shape = SubResource("CapsuleShape2D_yggxu")
 
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(0, -21)
+color = Color(0.945098, 0.262745, 0.164706, 1)
+texture = ExtResource("3_rcgup")
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -21)
 color = Color(0.945098, 0.262745, 0.164706, 1)
-energy = 0.5
 shadow_enabled = true
 texture = ExtResource("3_rcgup")
 

@@ -12,4 +12,5 @@ func _ready():
 	
 func _on_interact():
 	tile_map.set_layer_enabled(1, true)
-	DeathBridgeAreaCollision.disabled = true
+	if DeathBridgeAreaCollision != null:
+		DeathBridgeAreaCollision.disabled = true
