@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="PackedScene" uid="uid://bj0mxky1dt55n" path="res://Prefabs/game_manager.tscn" id="1_0hn31"]
-[ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
+[ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="13_oqhmc"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_yxfyq"]
-[ext_resource type="AudioStream" uid="uid://dqqkiifuxp7lr" path="res://Assets/Audio/dungeon002_0.ogg" id="2_uao6o"]
+[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="3_pyxjf"]
 [ext_resource type="PackedScene" uid="uid://bq4vupof37t78" path="res://Prefabs/Exit.tscn" id="3_yu6oo"]
@@ -31,7 +31,6 @@ script = ExtResource("1_yxfyq")
 next_level_name = "level2"
 pauseMenu = NodePath("")
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_0hn31")]
 player = NodePath("../Torch")
 ost = ExtResource("2_uao6o")
 
