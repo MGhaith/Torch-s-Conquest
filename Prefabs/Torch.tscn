@@ -17,9 +17,20 @@ flashingTimer = NodePath("FlashingLightTimer")
 healthTimer = NodePath("HealthDecreaseTimer")
 flameAreaCollision = NodePath("FlameArea/CollisionShape2D")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_ppy7a")
+hframes = 15
+vframes = 7
+frame = 13
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Shadow" type="PointLight2D" parent="Node2D"]
+
 color = Color(0.945098, 0.262745, 0.164706, 1)
 shadow_enabled = true
 shadow_filter = 1
@@ -40,26 +51,18 @@ position = Vector2(-1, 0.5)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_pwtxm")
 
-[node name="FlashingLightTimer" type="Timer" parent="."]
-process_callback = 0
-autostart = true
-
-[node name="HealthDecreaseTimer" type="Timer" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(2, 2)
-texture = ExtResource("3_ppy7a")
-hframes = 15
-vframes = 7
-frame = 13
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="FlameArea" type="Area2D" parent="." groups=["Player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlameArea"]
 shape = SubResource("CircleShape2D_7omj6")
+
+[node name="FlashingLightTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="HealthDecreaseTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="FlashingLightTimer" to="." method="_on_flashing_light_timer_timeout"]
 [connection signal="timeout" from="HealthDecreaseTimer" to="." method="_on_health_decrease_timer_timeout"]
