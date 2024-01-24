@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cti7sqgq363wn"]
 
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_n83sj"]
+[ext_resource type="Script" path="res://Scripts/Other(not used)/world.gd" id="1_n83sj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aewpd"]
 blend_mode = 3

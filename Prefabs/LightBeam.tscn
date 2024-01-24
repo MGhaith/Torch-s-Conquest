@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://r0jrdhexip2t"]
 
-[ext_resource type="Script" path="res://Scripts/LightBeam.gd" id="1_1htc1"]
+[ext_resource type="Script" path="res://Scripts/Other(not used)/LightBeam.gd" id="1_1htc1"]
 
 [sub_resource type="Gradient" id="Gradient_se2rp"]
 offsets = PackedFloat32Array(0, 0.333333, 1)
