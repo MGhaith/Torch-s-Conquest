@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://du76f5phq4lg"]
+
+[ext_resource type="Texture2D" uid="uid://drjhkmra2jsoo" path="res://Assets/Lever.png" id="1_k64ha"]
+[ext_resource type="Script" path="res://Scripts/interactable_lever.gd" id="1_xchnp"]
+[ext_resource type="PackedScene" uid="uid://7gvd8vm6bfjl" path="res://Prefabs/interaction_area.tscn" id="2_wlmy6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_711pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k64ha")
+}],
+"loop": true,
+"name": &"Inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs6k7"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g13yv"]
+size = Vector2(20, 21)
+
+[node name="InteractableLever" type="StaticBody2D" node_paths=PackedStringArray("interaction_area")]
+script = ExtResource("1_xchnp")
+interaction_area = NodePath("Interaction_area")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_711pv")
+animation = &"Inactive"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_fs6k7")
+
+[node name="Interaction_area" parent="." instance=ExtResource("2_wlmy6")]
+action_name = "ACTIVATE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_area"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_g13yv")

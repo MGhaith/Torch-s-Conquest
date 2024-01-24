@@ -12,7 +12,7 @@ extends CharacterBody2D
 @export var damageHealth : float = 2
 var playerHealth : float = 100
 @export_subgroup("Speed")
-@export var maxSpeed : float = 100
+@export var maxSpeed : float = 50
 @export var acceleration : float = 10 
 var canMove : bool = true
 

@@ -47,7 +47,7 @@ animations = [{
 radius = 23.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wk3w"]
-radius = 50.0025
+radius = 37.53
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("enemy", "animator")]
 script = ExtResource("1_p4oeg")
@@ -60,6 +60,7 @@ animation = &"Enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xtp76")
+disabled = true
 
 [node name="detection_area" type="Area2D" parent="."]
 
@@ -81,10 +82,9 @@ script = ExtResource("5_imk81")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "Delay", "enemy", "animator")]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "enemy", "animator")]
 script = ExtResource("6_tavy4")
 AttackHitCooldown = NodePath("../../AttackHitCooldown")
-Delay = NodePath("")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 

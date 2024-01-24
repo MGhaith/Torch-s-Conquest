@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3 uid="uid://bwu6j78xhohru"]
+
+[ext_resource type="Script" path="res://Scripts/interactable_torch.gd" id="1_4mm0x"]
+[ext_resource type="Texture2D" uid="uid://be1o1qlh4jgy8" path="res://Assets/Torch Animated.png" id="1_kkgu6"]
+[ext_resource type="Texture2D" uid="uid://d2ufn0oqcu6s6" path="res://Assets/flashlight_reverse.png" id="3_rcgup"]
+[ext_resource type="PackedScene" uid="uid://7gvd8vm6bfjl" path="res://Prefabs/interaction_area.tscn" id="4_8srno"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rh4s"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qysk"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk50l"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53rl5"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwjbi"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyc3x"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8lc1"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lj4c"]
+atlas = ExtResource("1_kkgu6")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqty6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rh4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qysk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk50l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53rl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwjbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyc3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8lc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lj4c")
+}],
+"loop": true,
+"name": &"Lit",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yggxu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2wy1"]
+size = Vector2(70, 66)
+
+[node name="InteractableTorch" type="StaticBody2D" node_paths=PackedStringArray("light", "flashingTimer", "interaction_area")]
+script = ExtResource("1_4mm0x")
+light = NodePath("PointLight2D")
+flashingTimer = NodePath("TorchLightTimer")
+interaction_area = NodePath("Interaction_area")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -14)
+sprite_frames = SubResource("SpriteFrames_bqty6")
+animation = &"Lit"
+frame_progress = 0.246133
+offset = Vector2(-0.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.491299, 0.854838)
+shape = SubResource("CapsuleShape2D_yggxu")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(0, -21)
+color = Color(0.945098, 0.262745, 0.164706, 1)
+texture = ExtResource("3_rcgup")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -21)
+color = Color(0.945098, 0.262745, 0.164706, 1)
+shadow_enabled = true
+texture = ExtResource("3_rcgup")
+
+[node name="TorchLightTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="Interaction_area" parent="." instance=ExtResource("4_8srno")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_area"]
+shape = SubResource("RectangleShape2D_a2wy1")
+
+[connection signal="timeout" from="TorchLightTimer" to="." method="_on_torch_light_timer_timeout"]

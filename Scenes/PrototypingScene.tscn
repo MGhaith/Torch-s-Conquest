@@ -153,6 +153,7 @@ position = Vector2(-20.7963, 422.472)
 scale = Vector2(37, 119)
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="Control" parent="UI"]
@@ -178,6 +179,9 @@ player = NodePath("../../../Torch")
 [node name="Torch" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("1_c0evi")]
 position = Vector2(215, -22)
 gameManager = NodePath("../GameManager")
+
+[node name="InteractableTorch" parent="." instance=ExtResource("13_oqhmc")]
+position = Vector2(519.796, -160.972)
 
 [node name="Background" type="MeshInstance2D" parent="."]
 z_index = -1
