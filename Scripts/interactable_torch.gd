@@ -25,5 +25,7 @@ func _on_torch_light_timer_timeout():
 	
 	
 func _on_interact():
-	tile_map.set_layer_enabled(3, true)
-	win_check_collision.disabled = false
+	if tile_map != null:
+		tile_map.set_layer_enabled(3, true)
+	if win_check_collision != null:
+		win_check_collision.disabled = false
