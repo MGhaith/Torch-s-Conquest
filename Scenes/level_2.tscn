@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl7t5g6xhecg0"]
+[gd_scene load_steps=12 format=3 uid="uid://dl7t5g6xhecg0"]
 
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_arytx"]
 [ext_resource type="Script" path="res://Scripts/DeathArea.gd" id="2_b2o84"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_yxjhd"]
 [ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="5_bcbij"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="6_25wq7"]
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="7_dh3hh"]
-[ext_resource type="Script" path="res://Scripts/EndGameMenu.gd" id="8_7f3p2"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="9_g07h7"]
 [ext_resource type="Script" path="res://Scripts/WinCheck.gd" id="10_xvvfr"]
 
@@ -706,10 +704,6 @@ texture = ExtResource("1_arytx")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_op2bp")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tdml"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87xmk"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3012"]
 size = Vector2(10, 10)
 
@@ -750,7 +744,7 @@ gameManager = NodePath("../GameManager")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endScreen", "player")]
 script = ExtResource("4_yxjhd")
-endScreen = NodePath("../UI/GameOverMenu")
+endScreen = NodePath("")
 player = NodePath("../Torch")
 ost = ExtResource("5_bcbij")
 
@@ -780,146 +774,6 @@ value = 100.0
 show_percentage = false
 script = ExtResource("6_25wq7")
 
-[node name="MainMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameManager")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_dh3hh")
-gameManager = NodePath("../../GameManager")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI/MainMenu"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5tdml")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainMenu"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -50.5
-offset_right = 35.0
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="PlayButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Play"
-
-[node name="LevelsButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Levels
-"
-
-[node name="OptionsButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Options"
-
-[node name="ExitButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Exit
-"
-
-[node name="GameOverMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameManager")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_7f3p2")
-gameManager = NodePath("../../GameManager")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI/GameOverMenu"]
-modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_87xmk")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/GameOverMenu"]
-layout_mode = 2
-offset_left = 426.0
-offset_top = 174.0
-offset_right = 726.0
-offset_bottom = 474.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverMenu/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="UI/GameOverMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-text_direction = 1
-language = "English"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/GameOverMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-alignment = 1
-
-[node name="Spacer" type="Control" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-
-[node name="Main Menu Button" type="Button" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Main Menu
-"
-
-[node name="Spacer2" type="Control" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="Exit Button" type="Button" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Exit
-"
-
-[node name="Spacer3" type="Control" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
@@ -941,10 +795,4 @@ shape = SubResource("RectangleShape2D_t3012")
 disabled = true
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/PlayButton" to="UI/MainMenu" method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/LevelsButton" to="UI/MainMenu" method="_on_options_button_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/OptionsButton" to="UI/MainMenu" method="_on_options_button_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/ExitButton" to="UI/MainMenu" method="_on_exit_button_pressed"]
-[connection signal="pressed" from="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/Main Menu Button" to="UI/GameOverMenu" method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/Exit Button" to="UI/GameOverMenu" method="_on_exit_button_pressed"]
 [connection signal="body_entered" from="WinCheck" to="WinCheck" method="_on_body_entered"]

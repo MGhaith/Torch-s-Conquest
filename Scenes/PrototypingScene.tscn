@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=16 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
@@ -8,15 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://b6vyrmijpoc2v" path="res://Prefabs/Key.tscn" id="5_25xcw"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="5_31yyw"]
 [ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="6_8fhp0"]
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="6_pggph"]
-[ext_resource type="Script" path="res://Scripts/EndGameMenu.gd" id="7_6ispx"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="7_y00o8"]
 [ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="13_oqhmc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucfo7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvi7m"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8x5ma"]
 
@@ -35,7 +29,7 @@ position = Vector2(615.204, 446.972)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endScreen", "player")]
 script = ExtResource("7_y00o8")
-endScreen = NodePath("../UI/GameOverMenu")
+endScreen = NodePath("")
 player = NodePath("../Torch")
 ost = ExtResource("8_4lxou")
 
@@ -183,146 +177,6 @@ show_percentage = false
 script = ExtResource("5_31yyw")
 player = NodePath("../../../Torch")
 
-[node name="MainMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameManager")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_pggph")
-gameManager = NodePath("../../GameManager")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI/MainMenu"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ucfo7")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainMenu"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -50.5
-offset_right = 35.0
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="PlayButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Play"
-
-[node name="LevelsButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Levels
-"
-
-[node name="OptionsButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Options"
-
-[node name="ExitButton" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Exit
-"
-
-[node name="GameOverMenu" type="Control" parent="UI" node_paths=PackedStringArray("gameManager")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_6ispx")
-gameManager = NodePath("../../GameManager")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI/GameOverMenu"]
-modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tvi7m")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/GameOverMenu"]
-layout_mode = 2
-offset_left = 426.0
-offset_top = 174.0
-offset_right = 726.0
-offset_bottom = 474.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverMenu/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="UI/GameOverMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-text_direction = 1
-language = "English"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/GameOverMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-alignment = 1
-
-[node name="Spacer" type="Control" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-
-[node name="Main Menu Button" type="Button" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Main Menu
-"
-
-[node name="Spacer2" type="Control" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="Exit Button" type="Button" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Exit
-"
-
-[node name="Spacer3" type="Control" parent="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-
 [node name="Torch" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("1_c0evi")]
 position = Vector2(215, -22)
 gameManager = NodePath("../GameManager")
@@ -365,10 +219,3 @@ rotates = false
 [node name="Enemy" parent="EnemyPatrolPath/PathFollow2D" instance=ExtResource("3_pyxjf")]
 position = Vector2(0.467407, -0.195999)
 rotation = 0.398522
-
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/PlayButton" to="UI/MainMenu" method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/LevelsButton" to="UI/MainMenu" method="_on_options_button_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/OptionsButton" to="UI/MainMenu" method="_on_options_button_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/ExitButton" to="UI/MainMenu" method="_on_exit_button_pressed"]
-[connection signal="pressed" from="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/Main Menu Button" to="UI/GameOverMenu" method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="UI/GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/Exit Button" to="UI/GameOverMenu" method="_on_exit_button_pressed"]
