@@ -12,9 +12,7 @@ config_version=5
 
 config/name="PS Game Jam 2024"
 config/tags=PackedStringArray("2_d", "game_jam", "top_down")
-
 run/main_scene="res://Scenes/scene_switcher.tscn"
-
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 

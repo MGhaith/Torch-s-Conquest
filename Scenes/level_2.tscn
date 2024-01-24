@@ -742,9 +742,8 @@ position = Vector2(176, 208)
 scale = Vector2(0.321575, 0.321575)
 gameManager = NodePath("../GameManager")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endScreen", "player")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_yxjhd")
-endScreen = NodePath("")
 player = NodePath("../Torch")
 ost = ExtResource("5_bcbij")
 

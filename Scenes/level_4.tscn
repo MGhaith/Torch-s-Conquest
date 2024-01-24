@@ -796,9 +796,8 @@ y_sort_enabled = true
 position = Vector2(276, 304)
 scale = Vector2(0.272726, 0.272726)
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("endScreen", "player")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_yrwao")
-endScreen = NodePath("")
 player = NodePath("../Torch")
 ost = ExtResource("5_g46kd")
 
