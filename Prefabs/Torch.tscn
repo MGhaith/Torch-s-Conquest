@@ -19,6 +19,7 @@ radius = 70.0286
 
 [node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "light_nodes", "flameAreaCollision") groups=["Player"]]
 top_level = true
+y_sort_enabled = true
 script = ExtResource("1_pqhpa")
 light = NodePath("LightNodes/Shadow")
 flashingTimer = NodePath("FlashingLightTimer")
@@ -28,6 +29,7 @@ flameAreaCollision = NodePath("FlameArea/CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -6.5)
 texture = ExtResource("3_ppy7a")
 hframes = 15
 vframes = 7
@@ -56,6 +58,8 @@ zoom = Vector2(3, 3)
 [node name="HealthBar" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -6.5
+offset_bottom = -6.5
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D/HealthBar" node_paths=PackedStringArray("player")]
 layout_mode = 1
@@ -78,7 +82,7 @@ script = ExtResource("4_c0j4l")
 player = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.375, 4.25)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_pwtxm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

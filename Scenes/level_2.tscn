@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dl7t5g6xhecg0"]
+[gd_scene load_steps=10 format=3 uid="uid://dl7t5g6xhecg0"]
 
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_arytx"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_yu6pm"]
 [ext_resource type="Script" path="res://Scripts/DeathArea.gd" id="2_b2o84"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_iuteg"]
+[ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="6_5k4ka"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="9_g07h7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op2bp"]
@@ -428,6 +429,7 @@ texture = ExtResource("1_arytx")
 7:11/0 = 0
 7:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:11/0/physics_layer_0/angular_velocity = 0.0
+7:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:11/0 = 0
 8:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:11/0/physics_layer_0/angular_velocity = 0.0
@@ -606,6 +608,7 @@ texture = ExtResource("1_arytx")
 14:17/0 = 0
 14:17/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:17/0/physics_layer_0/angular_velocity = 0.0
+14:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:17/0 = 0
 15:17/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:17/0/physics_layer_0/angular_velocity = 0.0
@@ -648,12 +651,15 @@ texture = ExtResource("1_arytx")
 13:19/0 = 0
 13:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 13:19/0/physics_layer_0/angular_velocity = 0.0
+13:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:19/0 = 0
 14:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:19/0/physics_layer_0/angular_velocity = 0.0
+14:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:19/0 = 0
 15:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:19/0/physics_layer_0/angular_velocity = 0.0
+15:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:20/0 = 0
 2:20/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:20/0/physics_layer_0/angular_velocity = 0.0
@@ -747,7 +753,7 @@ color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [node name="InteractableTorch" parent="." node_paths=PackedStringArray("tile_map", "win_check_collision") instance=ExtResource("9_g07h7")]
 position = Vector2(22, 112)
-scale = Vector2(0.336856, 0.336856)
+scale = Vector2(0.5051, 0.5051)
 tile_map = NodePath("../TileMap")
 win_check_collision = NodePath("../WinCheck/CollisionShape2D")
 
@@ -758,6 +764,10 @@ position = Vector2(-16, -32)
 position = Vector2(152, 28)
 shape = SubResource("RectangleShape2D_t3012")
 disabled = true
+
+[node name="Wood" parent="." instance=ExtResource("6_5k4ka")]
+position = Vector2(41, 108)
+scale = Vector2(0.168429, 0.168429)
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
