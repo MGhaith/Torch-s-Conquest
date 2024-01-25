@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var flashingTimer : Timer
 @export var healthTimer : Timer
 @export var flameAreaCollision : CollisionShape2D
-@export var gameManager : Node
 @export_category("Values")
 @export_subgroup("Health")
 @export var maxHealth : float = 100.0
@@ -13,7 +12,7 @@ extends CharacterBody2D
 var playerHealth : float = 100
 @export_subgroup("Speed")
 @export var maxSpeed : float = 50
-@export var acceleration : float = 10 
+@export var acceleration : float = 5 
 var canMove : bool = true
 
 func _ready():
@@ -40,7 +39,7 @@ func _process(_delta):
 			velocity.y = move_toward(velocity.y, 0, maxSpeed)
 	else:
 		# Implement logic for when the player is out of health (e.g., game over)
-		gameManager.EndLevel("Game Over")
+		return
 		
 
 
@@ -92,6 +91,7 @@ func SkillB():
 	light.texture_scale = 1
 	damageHealth = 1
 	flameAreaCollision.set_scale(Vector2(0.5, 0.5))
+	maxSpeed = 50
 
 # No-Skill reset
 func SkillReset():
@@ -119,7 +119,3 @@ func _on_health_decrease_timer_timeout():
 	if playerHealth <= 0:
 		playerHealth = 0  # Ensure health doesn't go below 0
 		healthTimer.stop()  # Stop the timer when the player runs out of health
-
-# Method to identifies this script as a player
-func is_player():
-	pass
