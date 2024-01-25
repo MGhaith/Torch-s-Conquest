@@ -24,9 +24,10 @@ func BeginLevel():
 
 # End Level
 func EndLevel(endState : String):
-	endScreen.visible = true
-	endScreen.SetLabelText(endState)
-	audioPlayer.stop()
+	#endScreen.visible = true
+	#endScreen.SetLabelText(endState)
+	#audioPlayer.stop()
+	pass
 
 
 # Restart Level

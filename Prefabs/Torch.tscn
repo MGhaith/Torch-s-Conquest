@@ -1,36 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyvfu64r7c3rm"]
+[gd_scene load_steps=9 format=3 uid="uid://dyvfu64r7c3rm"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_pqhpa"]
 [ext_resource type="Texture2D" uid="uid://d2ufn0oqcu6s6" path="res://Assets/flashlight_reverse.png" id="2_fd6el"]
 [ext_resource type="Texture2D" uid="uid://df3flbiqfbbv2" path="res://Assets/rpgcritter update formatted transparent.png" id="3_ppy7a"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="4_c0j4l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mguag"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scnl5"]
+bg_color = Color(0.858824, 0.137255, 0.0823529, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwtxm"]
 size = Vector2(15, 15.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7omj6"]
-radius = 157.003
+radius = 70.0286
 
 [node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "flameAreaCollision") groups=["Player"]]
 script = ExtResource("1_pqhpa")
-light = NodePath("Node2D/Shadow")
+light = NodePath("LightNodes/Shadow")
 flashingTimer = NodePath("FlashingLightTimer")
 healthTimer = NodePath("HealthDecreaseTimer")
 flameAreaCollision = NodePath("FlameArea/CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2, 2)
 texture = ExtResource("3_ppy7a")
 hframes = 15
 vframes = 7
 frame = 13
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="LightNodes" type="Node2D" parent="."]
 
-[node name="Shadow" type="PointLight2D" parent="Node2D"]
-
+[node name="Shadow" type="PointLight2D" parent="LightNodes"]
 color = Color(0.945098, 0.262745, 0.164706, 1)
 shadow_enabled = true
 shadow_filter = 1
@@ -38,22 +44,46 @@ shadow_filter_smooth = 3.0
 texture = ExtResource("2_fd6el")
 texture_scale = 2.0
 
-[node name="LightTexture" type="PointLight2D" parent="Node2D"]
+[node name="LightTexture" type="PointLight2D" parent="LightNodes"]
 color = Color(0.945098, 0.262745, 0.164706, 1)
 texture = ExtResource("2_fd6el")
 texture_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
+zoom = Vector2(3, 3)
+
+[node name="HealthBar" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D/HealthBar" node_paths=PackedStringArray("player")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 20.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_mguag")
+theme_override_styles/fill = SubResource("StyleBoxFlat_scnl5")
+value = 100.0
+show_percentage = false
+script = ExtResource("4_c0j4l")
+player = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)
-scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_pwtxm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="FlameArea" type="Area2D" parent="." groups=["Player"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlameArea"]
 shape = SubResource("CircleShape2D_7omj6")

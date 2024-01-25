@@ -1,13 +1,9 @@
 [gd_scene load_steps=50 format=3 uid="uid://blnsojkmff14x"]
 
-[ext_resource type="Script" path="res://Scripts/level_4.gd" id="1_lh6e3"]
+[ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_6avgs"]
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_pgid7"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="2_c3bh5"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_ygn37"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_yrwao"]
-[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="5_g46kd"]
-[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="6_a8r15"]
-[ext_resource type="Script" path="res://Scripts/WinCheck.gd" id="10_tpr0s"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="11_owj8b"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vf5e2"]
@@ -927,6 +923,8 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_f2m4c")
 
+[sub_resource type="GDScript" id="GDScript_8micg"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xng02"]
 size = Vector2(10, 10)
 
@@ -941,6 +939,8 @@ script = ExtResource("1_lh6e3")
 gameManager = NodePath("GameManager")
 tile_map = NodePath("TileMap")
 winCheckCollision = NodePath("WinCheck/CollisionShape2D")
+script = ExtResource("1_6avgs")
+next_level_name = "5"
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -1018,10 +1018,9 @@ show_percentage = false
 script = ExtResource("6_a8r15")
 player = NodePath("../../../Torch")
 
-[node name="WinCheck" type="Area2D" parent="." node_paths=PackedStringArray("gameManager")]
+[node name="WinCheck" type="Area2D" parent="."]
 visible = false
-script = ExtResource("10_tpr0s")
-gameManager = NodePath("../GameManager")
+script = SubResource("GDScript_8micg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinCheck"]
 position = Vector2(152, 28)
