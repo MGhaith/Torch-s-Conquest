@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://b22pl2n7nj6rh"]
+[gd_scene load_steps=18 format=3 uid="uid://b22pl2n7nj6rh"]
 
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_cvmv3"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_tfwed"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="2_rgedf"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_sujd3"]
+[ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="7_q41x5"]
 [ext_resource type="Script" path="res://Scripts/DeathArea.gd" id="9_gba5s"]
 [ext_resource type="PackedScene" uid="uid://du76f5phq4lg" path="res://Prefabs/interactable_lever.tscn" id="10_2xplm"]
 
@@ -815,6 +816,9 @@ tile_map = NodePath("../TileMap")
 position = Vector2(152, 28)
 shape = SubResource("RectangleShape2D_kynfl")
 disabled = true
+
+[node name="Wood" parent="." instance=ExtResource("7_q41x5")]
+position = Vector2(188, 201)
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]
 [connection signal="body_entered" from="DeathArea2" to="DeathArea2" method="_on_body_entered"]

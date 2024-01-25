@@ -9,9 +9,9 @@ signal level_changed(next_level_name)
 @export_category("Main Menu")
 @export var controlsMenu : Control
 @export var mainMenu : Control
-
-@onready var levelNumber = $VBoxContainer/LevelNumber
-@onready var levelName = $VBoxContainer/LevelName
+@export_category("Level Name")
+@export var levelNumber : Label
+@export var levelName : Label
 
 func _on_play_button_pressed():
 	emit_signal("level_changed", next_level_name)
@@ -46,22 +46,22 @@ func SetLabels(level_Number : int):
 				1:
 					levelNumber.text = "Level 1:"
 					levelName.text = "The First Corridor"
-					next_level_name = "level1"
+					next_level_name = "level5"
 				2:
 					levelNumber.text = "Level 2:"
-					levelName.text = "Empty"
+					levelName.text = "Water Passage"
 					next_level_name = "level2"
 				3:
 					levelNumber.text = "Level 3:"
-					levelName.text = "Empty"
+					levelName.text = "Hidden Pathway"
 					next_level_name = "level3"
 				4:
 					levelNumber.text = "Level 4:"
-					levelName.text = "Empty"
+					levelName.text = "Storage Rooms"
 					next_level_name = "level4"
 				5:
 					levelNumber.text = "Level 5:"
-					levelName.text = "Empty"
+					levelName.text = "The Last Maze"
 					next_level_name = "level5"
 
 # Player Death Code
