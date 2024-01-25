@@ -1,9 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://blnsojkmff14x"]
+[gd_scene load_steps=50 format=3 uid="uid://blnsojkmff14x"]
 
-[ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_6avgs"]
+[ext_resource type="Script" path="res://Scripts/level_4.gd" id="1_lh6e3"]
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_pgid7"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="2_c3bh5"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_ygn37"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_yrwao"]
+[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="5_g46kd"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="6_a8r15"]
+[ext_resource type="Script" path="res://Scripts/WinCheck.gd" id="10_tpr0s"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="11_owj8b"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vf5e2"]
@@ -923,8 +927,6 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_f2m4c")
 
-[sub_resource type="GDScript" id="GDScript_8micg"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xng02"]
 size = Vector2(10, 10)
 
@@ -934,9 +936,9 @@ _data = {
 }
 point_count = 20
 
-[node name="Level 4" type="Node2D"]
-script = ExtResource("1_6avgs")
-next_level_name = "5"
+[node name="Level 4" type="Node2D" node_paths=PackedStringArray("gameManager")]
+script = ExtResource("1_lh6e3")
+gameManager = NodePath("GameManager")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -961,21 +963,19 @@ level = NodePath("..")
 position = Vector2(97, 292)
 scale = Vector2(0.336856, 0.336856)
 level = NodePath("..")
-current_torch = 1
 
 [node name="InteractableTorch3" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
 position = Vector2(305, 46)
 scale = Vector2(0.336856, 0.336856)
 level = NodePath("..")
-current_torch = 2
 
 [node name="InteractableTorch4" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
 position = Vector2(170, 292)
 scale = Vector2(0.336856, 0.336856)
 level = NodePath("..")
-current_torch = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [node name="Torch" parent="." instance=ExtResource("3_ygn37")]
@@ -983,9 +983,42 @@ y_sort_enabled = true
 position = Vector2(276, 304)
 scale = Vector2(0.272726, 0.272726)
 
-[node name="WinCheck" type="Area2D" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("4_yrwao")
+player = NodePath("../Torch")
+ost = ExtResource("5_g46kd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
+position = Vector2(615.204, 446.972)
+
+[node name="UI" type="CanvasLayer" parent="."]
 visible = false
-script = SubResource("GDScript_8micg")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/HealthBar" node_paths=PackedStringArray("player")]
+modulate = Color(0.858824, 0.137255, 0.0823529, 1)
+layout_mode = 1
+offset_left = 45.0
+offset_top = 69.0
+offset_right = 253.0
+offset_bottom = 96.0
+value = 100.0
+show_percentage = false
+script = ExtResource("6_a8r15")
+player = NodePath("../../../Torch")
+
+[node name="WinCheck" type="Area2D" parent="." node_paths=PackedStringArray("gameManager")]
+visible = false
+script = ExtResource("10_tpr0s")
+gameManager = NodePath("../GameManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinCheck"]
 position = Vector2(152, 28)

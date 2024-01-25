@@ -7,6 +7,10 @@ extends StaticBody2D
 @export var interaction_area: InteractionArea
 @export var tile_map: TileMap
 @export var win_check_collision: CollisionShape2D
+@export var level: Node2D
+
+@export_category("Torch")
+@export var current_torch: int
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
@@ -29,3 +33,6 @@ func _on_interact():
 		tile_map.set_layer_enabled(3, true)
 	if win_check_collision != null:
 		win_check_collision.disabled = false
+	if level != null:
+		level.win_condition[current_torch] = true
+		
