@@ -797,7 +797,6 @@ position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_lyfyv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]

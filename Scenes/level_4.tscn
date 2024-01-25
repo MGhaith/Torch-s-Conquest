@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://blnsojkmff14x"]
+[gd_scene load_steps=48 format=3 uid="uid://blnsojkmff14x"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_6avgs"]
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_pgid7"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="2_c3bh5"]
+[ext_resource type="Script" path="res://Scripts/MultipleTorches.gd" id="3_esto6"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_ygn37"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="11_owj8b"]
 
@@ -1007,31 +1008,36 @@ layer_3/name = "Door"
 layer_3/enabled = false
 layer_3/tile_data = PackedInt32Array(65544, 589825, 15)
 
-[node name="InteractableTorch" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
+[node name="MultipleTorches" type="Node2D" parent="." node_paths=PackedStringArray("win_check_collision", "tile_map")]
+script = ExtResource("3_esto6")
+win_check_collision = NodePath("../WinCheck/CollisionShape2D")
+tile_map = NodePath("../TileMap")
+
+[node name="InteractableTorch" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
 position = Vector2(40, 58)
 scale = Vector2(0.336856, 0.336856)
-level = NodePath("..")
+torches_script = NodePath("..")
 
-[node name="InteractableTorch2" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
+[node name="InteractableTorch2" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
 position = Vector2(97, 292)
 scale = Vector2(0.336856, 0.336856)
-level = NodePath("..")
+torches_script = NodePath("..")
 current_torch = 1
 
-[node name="InteractableTorch3" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
+[node name="InteractableTorch3" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
 position = Vector2(305, 46)
 scale = Vector2(0.336856, 0.336856)
-level = NodePath("..")
+torches_script = NodePath("..")
 current_torch = 2
 
-[node name="InteractableTorch4" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
+[node name="InteractableTorch4" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
 position = Vector2(170, 292)
 scale = Vector2(0.336856, 0.336856)
-level = NodePath("..")
+torches_script = NodePath("..")
 current_torch = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+color = Color(0.0605303, 0.0605303, 0.0605304, 1)
 
 [node name="Torch" parent="." instance=ExtResource("3_ygn37")]
 y_sort_enabled = true
@@ -1039,13 +1045,12 @@ position = Vector2(276, 304)
 scale = Vector2(0.5, 0.5)
 
 [node name="WinCheck" type="Area2D" parent="."]
-visible = false
+position = Vector2(-16, 1)
 script = SubResource("GDScript_8micg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinCheck"]
 position = Vector2(152, 28)
 shape = SubResource("RectangleShape2D_xng02")
-disabled = true
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_btvjx")
@@ -1059,4 +1064,5 @@ rotates = false
 rotation = 3.07178
 scale = Vector2(0.520208, 0.520208)
 
+[connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
 [connection signal="body_entered" from="WinCheck" to="WinCheck" method="_on_body_entered"]

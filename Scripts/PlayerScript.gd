@@ -55,7 +55,7 @@ func get_input_dir() -> Vector2:
 
 # Health Decrease
 func StartHealthTimer():
-	healthTimer.wait_time = 10  # Set the timer to trigger every second
+	healthTimer.wait_time = 1 # Set the timer to trigger every second
 	healthTimer.start()
 
 # Add health 
