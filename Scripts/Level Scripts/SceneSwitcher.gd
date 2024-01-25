@@ -8,9 +8,10 @@ var game_paused : bool = false:
 	get:
 		return game_paused
 	set(value):
-		game_paused = value
-		get_tree().paused = game_paused
-		emit_signal("toggle_game_paused", game_paused)
+		if current_level.pausable:
+			game_paused = value
+			get_tree().paused = game_paused
+			emit_signal("toggle_game_paused", game_paused)
 
 var passedHealth : float
 
@@ -26,12 +27,14 @@ func _input(event : InputEvent):
 	if event.is_action_pressed("Pause"):
 		game_paused = !game_paused
 
+
 func handle_level_changed(next_level_name : String):
 	var next_level
 	var target_level_name
 	
 	match next_level_name:
 		"main":
+			audioPlayer.stop()
 			target_level_name = "MainMenu"
 		"0":
 			target_level_name = "LevelName"
@@ -40,6 +43,7 @@ func handle_level_changed(next_level_name : String):
 		"1":
 			target_level_name = "LevelName"
 		"level1":
+			passedHealth = 100
 			target_level_name = "level_1"
 		"2":
 			target_level_name = "LevelName"

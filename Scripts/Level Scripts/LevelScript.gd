@@ -5,6 +5,7 @@ signal level_changed(next_level_name)
 @export var next_level_name : String
 @export var game_manager : GameManager
 @export var player : CharacterBody2D
+@export var pausable : bool
 @export_category("Main Menu")
 @export var controlsMenu : Control
 @export var mainMenu : Control
@@ -63,6 +64,12 @@ func SetLabels(level_Number : int):
 					levelName.text = "Empty"
 					next_level_name = "level5"
 
+# Player Death Code
+func _process(_delta):
+	if player != null && player.playerHealth <= 0:
+		game_manager.passedHealth = 0
+		game_manager.game_paused = true
+
 # Level Win Check Code
 func _on_win_check_body_entered(body):
 	if body.is_in_group("Player"):
@@ -73,4 +80,14 @@ func _on_win_check_body_entered(body):
 
 
 func _on_main_menu_button_pressed():
-	emit_signal("level_changed", "main")
+	game_manager.game_paused = false
+	game_manager.handle_level_changed("main")
+
+
+func _on_new_game_button_pressed():
+	game_manager.game_paused = false
+	game_manager.handle_level_changed("1")
+
+
+func _on_ending_timer_timeout():
+	emit_signal("level_changed", next_level_name)

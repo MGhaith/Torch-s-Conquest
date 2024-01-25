@@ -39,7 +39,8 @@ func _process(_delta):
 			velocity.y = move_toward(velocity.y, 0, maxSpeed)
 	else:
 		# Implement logic for when the player is out of health (e.g., game over)
-		return
+		velocity.x = move_toward(velocity.x, 0, maxSpeed)
+		velocity.y = move_toward(velocity.y, 0, maxSpeed)
 		
 
 
@@ -84,7 +85,7 @@ func FireSprint():
 	light.texture_scale = 2.5
 	damageHealth = 3
 	flameAreaCollision.set_scale(Vector2(1.1, 1.1))
-	maxSpeed = 200
+	maxSpeed = 150
 
 #SkillB
 func SkillB():
