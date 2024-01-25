@@ -3,9 +3,10 @@ extends Node
 signal level_changed(next_level_name)
 
 @export var next_level_name : String
-@export_category("Main Menu")
 @export var controlsMenu : Control
 @export var mainMenu : Control
+@export var game_manager : GameManager
+@export var pauseMenu : Control
 
 @onready var levelNumber = $VBoxContainer/LevelNumber
 @onready var levelName = $VBoxContainer/LevelName
@@ -61,10 +62,3 @@ func SetLabels(level_Number : int):
 					levelNumber.text = "Level 5:"
 					levelName.text = "Empty"
 					next_level_name = "level5"
-
-# Level 1 Win Check Code
-func _on_win_check_body_entered(body):
-	if body.is_in_group("Player"):
-		body.healthTimer.stop()
-		body.canMove = false
-		emit_signal("level_changed", next_level_name)

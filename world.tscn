@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cti7sqgq363wn"]
+
+[ext_resource type="Script" path="res://Scripts/Other(not used)/world.gd" id="1_n83sj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aewpd"]
+blend_mode = 3
+
+[sub_resource type="QuadMesh" id="QuadMesh_5s2cx"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_n83sj")
+
+[node name="Fog" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_aewpd")
+centered = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(605.117, 322.493)
+scale = Vector2(-2355.63, 821.989)
+mesh = SubResource("QuadMesh_5s2cx")

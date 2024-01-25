@@ -7,6 +7,8 @@ func _process(_delta):
 
 # Update the health bar
 func Update():
+	if not player:
+		player = null
 	
 	if player != null:
 		if player.playerHealth >= 0:
