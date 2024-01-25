@@ -772,11 +772,10 @@ win_check_collision = NodePath("../WinCheck/CollisionShape2D")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
-[node name="Torch" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("3_sujd3")]
+[node name="Torch" parent="." instance=ExtResource("3_sujd3")]
 y_sort_enabled = true
 position = Vector2(143, 254)
 scale = Vector2(0.5, 0.5)
-gameManager = NodePath("")
 
 [node name="DeathArea" type="Area2D" parent="."]
 position = Vector2(119, 104)
