@@ -936,11 +936,10 @@ _data = {
 }
 point_count = 20
 
-[node name="Level 4" type="Node2D" node_paths=PackedStringArray("gameManager", "tile_map", "winCheckCollision")]
+[node name="Level 4" type="Node2D" node_paths=PackedStringArray("gameManager", "tile_map")]
 script = ExtResource("1_lh6e3")
 gameManager = NodePath("GameManager")
 tile_map = NodePath("TileMap")
-winCheckCollision = NodePath("WinCheck/CollisionShape2D")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -965,19 +964,16 @@ level = NodePath("..")
 position = Vector2(97, 292)
 scale = Vector2(0.336856, 0.336856)
 level = NodePath("..")
-current_torch = 1
 
 [node name="InteractableTorch3" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
 position = Vector2(305, 46)
 scale = Vector2(0.336856, 0.336856)
 level = NodePath("..")
-current_torch = 2
 
 [node name="InteractableTorch4" parent="." node_paths=PackedStringArray("level") instance=ExtResource("2_c3bh5")]
 position = Vector2(170, 292)
 scale = Vector2(0.336856, 0.336856)
 level = NodePath("..")
-current_torch = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)

@@ -42,13 +42,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func on_child_transition(new_state_name: String, old_state: State):
 	if not old_state == current_state:
-		push_error("%s transitioned when not current state" % old_state.name)
 		return
 	# Assigns the current state to the last state variable before changing
 	last_state = current_state
 	var new_state = states.get(new_state_name.to_lower())
 	if not new_state:
-		push_error("State %s not found" % new_state_name)
 		return
 	if current_state:
 		current_state.exit()
