@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var light : PointLight2D
 @export var flashingTimer : Timer
 @export var healthTimer : Timer
+@export var light_nodes : Node2D
 @export var flameAreaCollision : CollisionShape2D
 @export_category("Values")
 @export_subgroup("Health")
