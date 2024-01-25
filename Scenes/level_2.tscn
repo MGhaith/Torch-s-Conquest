@@ -751,7 +751,6 @@ ost = ExtResource("5_bcbij")
 position = Vector2(615.204, 446.972)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [node name="InteractableTorch" parent="." node_paths=PackedStringArray("tile_map", "win_check_collision") instance=ExtResource("9_g07h7")]
