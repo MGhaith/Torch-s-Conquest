@@ -28,12 +28,3 @@ func EndLevel(endState : String):
 	#endScreen.SetLabelText(endState)
 	#audioPlayer.stop()
 	pass
-
-
-# Restart Level
-func RestartLevel():
-	get_tree().reload_current_scene()
-
-#Pause the level
-func PauseLevel():
-	pass

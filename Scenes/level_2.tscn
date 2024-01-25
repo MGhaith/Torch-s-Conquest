@@ -706,9 +706,11 @@ sources/0 = SubResource("TileSetAtlasSource_op2bp")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3012"]
 size = Vector2(10, 10)
 
-[node name="Level 2" type="Node2D"]
+[node name="Level 2" type="Node2D" node_paths=PackedStringArray("player")]
+process_mode = 1
 script = ExtResource("1_yu6pm")
 next_level_name = "3"
+player = NodePath("Torch")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jx877")

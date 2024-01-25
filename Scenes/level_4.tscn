@@ -987,9 +987,11 @@ _data = {
 }
 point_count = 20
 
-[node name="Level 4" type="Node2D"]
+[node name="Level 4" type="Node2D" node_paths=PackedStringArray("player")]
+process_mode = 1
 script = ExtResource("1_6avgs")
 next_level_name = "5"
+player = NodePath("Torch")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -1034,7 +1036,7 @@ color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 [node name="Torch" parent="." instance=ExtResource("3_ygn37")]
 y_sort_enabled = true
 position = Vector2(276, 304)
-scale = Vector2(0.272726, 0.272726)
+scale = Vector2(0.5, 0.5)
 
 [node name="WinCheck" type="Area2D" parent="."]
 visible = false

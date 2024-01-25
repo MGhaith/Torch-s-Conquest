@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://t6slamfctn0h"]
+[gd_scene load_steps=13 format=3 uid="uid://t6slamfctn0h"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_p5jqf"]
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_ubf5u"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://du76f5phq4lg" path="res://Prefabs/interactable_lever.tscn" id="4_w8dtr"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="5_j1n17"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="6_etsjb"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="7_5ya0j"]
-[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_apw74"]
 [ext_resource type="Script" path="res://Scripts/DeathArea.gd" id="12_inral"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26151"]
@@ -733,9 +731,11 @@ point_count = 24
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lyfyv"]
 size = Vector2(150, 187)
 
-[node name="Level 3" type="Node2D"]
+[node name="Level 3" type="Node2D" node_paths=PackedStringArray("player")]
+process_mode = 1
 script = ExtResource("1_p5jqf")
 next_level_name = "4"
+player = NodePath("Torch")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -786,15 +786,7 @@ scale = Vector2(0.520456, 0.520456)
 
 [node name="Torch" parent="." instance=ExtResource("6_etsjb")]
 position = Vector2(30, 248)
-scale = Vector2(0.382538, 0.382538)
-
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("7_5ya0j")
-player = NodePath("../Torch")
-ost = ExtResource("8_apw74")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
-position = Vector2(615.204, 446.972)
+scale = Vector2(0.5, 0.5)
 
 [node name="DeathArea" type="Area2D" parent="."]
 position = Vector2(303, 285)
