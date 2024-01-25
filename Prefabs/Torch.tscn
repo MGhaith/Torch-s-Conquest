@@ -17,11 +17,12 @@ size = Vector2(15, 15.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_7omj6"]
 radius = 70.0286
 
-[node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "flameAreaCollision") groups=["Player"]]
+[node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "light_nodes", "flameAreaCollision") groups=["Player"]]
 script = ExtResource("1_pqhpa")
 light = NodePath("LightNodes/Shadow")
 flashingTimer = NodePath("FlashingLightTimer")
 healthTimer = NodePath("HealthDecreaseTimer")
+light_nodes = NodePath("LightNodes")
 flameAreaCollision = NodePath("FlameArea/CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

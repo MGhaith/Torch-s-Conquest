@@ -67,6 +67,7 @@ func SetLabels(level_Number : int):
 # Player Death Code
 func _process(_delta):
 	if player != null && player.playerHealth <= 0:
+		player.light_nodes.visible = false
 		game_manager.passedHealth = 0
 		game_manager.game_paused = true
 
