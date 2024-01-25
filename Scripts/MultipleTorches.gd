@@ -8,10 +8,7 @@ extends Node2D
 var win_condition = [false, false, false, false]
 
 
-func _process(delta):
+func _process(_delta):
 	if win_condition.min():
 		win_check_collision.disabled = false
 		tile_map.set_layer_enabled(3, true)
-		
-	print(win_condition)
-		

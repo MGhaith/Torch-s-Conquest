@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl7t5g6xhecg0"]
+[gd_scene load_steps=9 format=3 uid="uid://dl7t5g6xhecg0"]
 
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_arytx"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_yu6pm"]
 [ext_resource type="Script" path="res://Scripts/DeathArea.gd" id="2_b2o84"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_iuteg"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_yxjhd"]
-[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="5_bcbij"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="9_g07h7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op2bp"]
@@ -743,13 +741,6 @@ polygon = PackedVector2Array(-65, 7, -23, 7, -23, -24, 9, -24, 9, -64, -31, -64,
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="DeathArea"]
 polygon = PackedVector2Array(25, -65, 25, -41, 42, -41, 42, -8, 58, -8, 58, 22, 75, 22, 75, 79, 97, 79, 97, 118, 120, 118, 119, -102, 65, -102, 65, -64)
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("4_yxjhd")
-ost = ExtResource("5_bcbij")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
-position = Vector2(615.204, 446.972)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)

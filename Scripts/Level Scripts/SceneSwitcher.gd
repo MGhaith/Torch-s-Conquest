@@ -73,8 +73,9 @@ func handle_level_changed(next_level_name : String):
 	if next_level.player != null:
 		next_level.player.StartHealthTimer()
 		next_level.player.playerHealth = passedHealth
-		audioPlayer.volume_db = 10
-		audioPlayer.play()
+		if !audioPlayer.playing:
+			audioPlayer.volume_db = 10
+			audioPlayer.play()
 	next_level.level_changed.connect(handle_level_changed)
 	
 	if target_level_name == "LevelName":

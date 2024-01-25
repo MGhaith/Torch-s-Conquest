@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://t6slamfctn0h"]
+[gd_scene load_steps=14 format=3 uid="uid://t6slamfctn0h"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_p5jqf"]
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_ubf5u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://du76f5phq4lg" path="res://Prefabs/interactable_lever.tscn" id="4_w8dtr"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="5_j1n17"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="6_etsjb"]
+[ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="8_ub62x"]
 [ext_resource type="Script" path="res://Scripts/DeathArea.gd" id="12_inral"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26151"]
@@ -799,6 +800,15 @@ shape = SubResource("RectangleShape2D_lyfyv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="Wood" parent="." instance=ExtResource("8_ub62x")]
+position = Vector2(542, 260)
+
+[node name="Wood2" parent="." instance=ExtResource("8_ub62x")]
+position = Vector2(573, 271)
+
+[node name="Wood3" parent="." instance=ExtResource("8_ub62x")]
+position = Vector2(509, 290)
 
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]

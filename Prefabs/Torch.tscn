@@ -18,6 +18,7 @@ size = Vector2(12.75, 8.5)
 radius = 70.0286
 
 [node name="Torch" type="CharacterBody2D" node_paths=PackedStringArray("light", "flashingTimer", "healthTimer", "light_nodes", "flameAreaCollision") groups=["Player"]]
+top_level = true
 script = ExtResource("1_pqhpa")
 light = NodePath("LightNodes/Shadow")
 flashingTimer = NodePath("FlashingLightTimer")
