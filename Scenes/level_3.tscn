@@ -778,7 +778,8 @@ shape = SubResource("RectangleShape2D_0des7")
 disabled = true
 
 [node name="InteractableLever" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("4_w8dtr")]
-position = Vector2(134, 206)
+position = Vector2(134, 202)
+scale = Vector2(0.293806, 0.293806)
 tile_map = NodePath("../TileMap")
 
 [node name="EnemyPath" type="Path2D" parent="."]

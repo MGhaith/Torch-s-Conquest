@@ -11,6 +11,7 @@ func _ready():
 	
 	
 func _on_interact():
+	$AnimatedSprite2D.play("Active")
 	tile_map.set_layer_enabled(1, true)
 	if DeathBridgeAreaCollision != null:
 		DeathBridgeAreaCollision.disabled = true

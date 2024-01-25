@@ -820,6 +820,7 @@ shape = SubResource("RectangleShape2D_60hql")
 
 [node name="InteractableLever" parent="." node_paths=PackedStringArray("DeathBridgeAreaCollision", "tile_map") instance=ExtResource("10_2xplm")]
 position = Vector2(165, 160)
+scale = Vector2(0.248691, 0.248691)
 DeathBridgeAreaCollision = NodePath("../DeathBridgeArea/CollisionShape2D")
 tile_map = NodePath("../TileMap")
 
