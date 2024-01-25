@@ -8,13 +8,15 @@ extends StaticBody2D
 @export var tile_map: TileMap
 @export var win_check_collision: CollisionShape2D
 @export var torches_script: Node2D
+@export var Light: PointLight2D
+@export var Shadow: PointLight2D
 
 @export_category("Torch")
 @export var current_torch: int
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
-	$AnimatedSprite2D.play("Lit")
+	$AnimatedSprite2D.play("Off")
 	randomize()
 
 # Flashing Light effect
@@ -29,6 +31,9 @@ func _on_torch_light_timer_timeout():
 	
 	
 func _on_interact():
+	$AnimatedSprite2D.play("Lit")
+	Light.enabled = true
+	Shadow.enabled = true
 	if tile_map != null:
 		tile_map.set_layer_enabled(3, true)
 	if win_check_collision != null:

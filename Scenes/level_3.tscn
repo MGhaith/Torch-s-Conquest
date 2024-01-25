@@ -435,6 +435,7 @@ texture = ExtResource("1_ubf5u")
 7:11/0 = 0
 7:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:11/0/physics_layer_0/angular_velocity = 0.0
+7:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:11/0 = 0
 8:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:11/0/physics_layer_0/angular_velocity = 0.0
@@ -616,6 +617,7 @@ texture = ExtResource("1_ubf5u")
 14:17/0 = 0
 14:17/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:17/0/physics_layer_0/angular_velocity = 0.0
+14:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:17/0 = 0
 15:17/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:17/0/physics_layer_0/angular_velocity = 0.0
@@ -655,15 +657,19 @@ texture = ExtResource("1_ubf5u")
 10:19/0 = 0
 10:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:19/0/physics_layer_0/angular_velocity = 0.0
+10:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:19/0 = 0
 13:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 13:19/0/physics_layer_0/angular_velocity = 0.0
+13:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:19/0 = 0
 14:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:19/0/physics_layer_0/angular_velocity = 0.0
+14:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:19/0 = 0
 15:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:19/0/physics_layer_0/angular_velocity = 0.0
+15:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:20/0 = 0
 2:20/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:20/0/physics_layer_0/angular_velocity = 0.0
@@ -688,12 +694,15 @@ texture = ExtResource("1_ubf5u")
 2:21/0 = 0
 2:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:21/0/physics_layer_0/angular_velocity = 0.0
+2:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:21/0 = 0
 3:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:21/0/physics_layer_0/angular_velocity = 0.0
+3:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:21/0 = 0
 5:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:21/0/physics_layer_0/angular_velocity = 0.0
+5:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:22/0 = 0
 2:22/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:22/0/physics_layer_0/angular_velocity = 0.0
@@ -756,7 +765,7 @@ layer_3/tile_data = PackedInt32Array(720932, 589824, 15)
 
 [node name="InteractableTorch" parent="." node_paths=PackedStringArray("tile_map", "win_check_collision") instance=ExtResource("2_5hpbg")]
 position = Vector2(595, 196)
-scale = Vector2(0.287722, 0.287722)
+scale = Vector2(0.597944, 0.597944)
 tile_map = NodePath("../TileMap")
 win_check_collision = NodePath("../WinCheck/CollisionShape2D")
 
@@ -801,14 +810,13 @@ shape = SubResource("RectangleShape2D_lyfyv")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
+[node name="Wood4" parent="." instance=ExtResource("8_ub62x")]
+position = Vector2(53, 295)
+scale = Vector2(0.168429, 0.168429)
+
 [node name="Wood" parent="." instance=ExtResource("8_ub62x")]
-position = Vector2(542, 260)
-
-[node name="Wood2" parent="." instance=ExtResource("8_ub62x")]
-position = Vector2(573, 271)
-
-[node name="Wood3" parent="." instance=ExtResource("8_ub62x")]
-position = Vector2(509, 290)
+position = Vector2(424, 365)
+scale = Vector2(0.168429, 0.168429)
 
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]

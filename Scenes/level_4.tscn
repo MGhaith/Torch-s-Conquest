@@ -1,10 +1,11 @@
-[gd_scene load_steps=89 format=3 uid="uid://blnsojkmff14x"]
+[gd_scene load_steps=90 format=3 uid="uid://blnsojkmff14x"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_6avgs"]
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_pgid7"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="2_c3bh5"]
 [ext_resource type="Script" path="res://Scripts/MultipleTorches.gd" id="3_esto6"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_ygn37"]
+[ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="7_c45bt"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="11_owj8b"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dey5j"]
@@ -740,6 +741,7 @@ texture = ExtResource("1_pgid7")
 7:11/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c0lbc")
 7:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:11/0/physics_layer_0/angular_velocity = 0.0
+7:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:11/0 = 0
 8:11/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ukchn")
 8:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -973,6 +975,7 @@ texture = ExtResource("1_pgid7")
 14:17/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_aib2l")
 14:17/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:17/0/physics_layer_0/angular_velocity = 0.0
+14:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:17/0 = 0
 15:17/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_hdoca")
 15:17/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -1031,14 +1034,17 @@ texture = ExtResource("1_pgid7")
 13:19/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_upc4g")
 13:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 13:19/0/physics_layer_0/angular_velocity = 0.0
+13:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:19/0 = 0
 14:19/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_bpire")
 14:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:19/0/physics_layer_0/angular_velocity = 0.0
+14:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:19/0 = 0
 15:19/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_5np28")
 15:19/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:19/0/physics_layer_0/angular_velocity = 0.0
+15:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:20/0 = 0
 2:20/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_5oauq")
 2:20/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -1142,24 +1148,24 @@ tile_map = NodePath("../TileMap")
 
 [node name="InteractableTorch" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
 position = Vector2(40, 58)
-scale = Vector2(0.336856, 0.336856)
+scale = Vector2(0.895373, 0.895373)
 torches_script = NodePath("..")
 
 [node name="InteractableTorch2" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
 position = Vector2(97, 292)
-scale = Vector2(0.336856, 0.336856)
+scale = Vector2(0.917163, 0.917163)
 torches_script = NodePath("..")
 current_torch = 1
 
 [node name="InteractableTorch3" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
-position = Vector2(305, 46)
-scale = Vector2(0.336856, 0.336856)
+position = Vector2(305, 54)
+scale = Vector2(0.97843, 0.97843)
 torches_script = NodePath("..")
 current_torch = 2
 
 [node name="InteractableTorch4" parent="MultipleTorches" node_paths=PackedStringArray("torches_script") instance=ExtResource("2_c3bh5")]
-position = Vector2(170, 292)
-scale = Vector2(0.336856, 0.336856)
+position = Vector2(170, 295)
+scale = Vector2(0.891693, 0.891693)
 torches_script = NodePath("..")
 current_torch = 3
 
@@ -1167,7 +1173,6 @@ current_torch = 3
 color = Color(0.0313726, 0.0313726, 0.0313726, 1)
 
 [node name="Torch" parent="." instance=ExtResource("3_ygn37")]
-y_sort_enabled = true
 position = Vector2(276, 304)
 scale = Vector2(0.5, 0.5)
 
@@ -1189,6 +1194,22 @@ rotates = false
 [node name="Enemy" parent="EnemyPath/PathFollow2D" instance=ExtResource("11_owj8b")]
 rotation = 3.07178
 scale = Vector2(0.520208, 0.520208)
+
+[node name="Wood" parent="." instance=ExtResource("7_c45bt")]
+position = Vector2(236, 301)
+scale = Vector2(0.168429, 0.168429)
+
+[node name="Wood2" parent="." instance=ExtResource("7_c45bt")]
+position = Vector2(72, 293)
+scale = Vector2(0.168429, 0.168429)
+
+[node name="Wood3" parent="." instance=ExtResource("7_c45bt")]
+position = Vector2(61, 48)
+scale = Vector2(0.168429, 0.168429)
+
+[node name="Wood4" parent="." instance=ExtResource("7_c45bt")]
+position = Vector2(281, 68)
+scale = Vector2(0.168429, 0.168429)
 
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
 [connection signal="body_entered" from="WinCheck" to="WinCheck" method="_on_body_entered"]
