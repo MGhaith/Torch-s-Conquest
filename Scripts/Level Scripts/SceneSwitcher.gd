@@ -2,7 +2,7 @@ extends Node
 
 class_name GameManager
 
-signal toggle_game_pauseed(is_paused: bool)
+signal toggle_game_paused(is_paused: bool)
 
 var game_paused : bool = false:
 	get:
@@ -10,12 +10,16 @@ var game_paused : bool = false:
 	set(value):
 		game_paused = value
 		get_tree().paused = game_paused
-		emit_signal("toggle_game_pauseed", game_paused)
+		emit_signal("toggle_game_paused", game_paused)
+
+var passedHealth : float
 
 @onready var current_level = $Menus
+@onready var audioPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	passedHealth = 100
 	current_level.level_changed.connect(handle_level_changed)
 
 func _input(event : InputEvent):
@@ -61,6 +65,12 @@ func handle_level_changed(next_level_name : String):
 	
 	next_level = load("res://Scenes/" + target_level_name + ".tscn").instantiate()
 	add_child(next_level)
+	next_level.game_manager = self
+	if next_level.player != null:
+		next_level.player.StartHealthTimer()
+		next_level.player.playerHealth = passedHealth
+		audioPlayer.volume_db = 10
+		audioPlayer.play()
 	next_level.level_changed.connect(handle_level_changed)
 	
 	if target_level_name == "LevelName":
@@ -68,3 +78,4 @@ func handle_level_changed(next_level_name : String):
 	
 	current_level.queue_free()
 	current_level = next_level
+

@@ -742,10 +742,12 @@ size = Vector2(28, 37.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kynfl"]
 size = Vector2(10, 10)
 
-[node name="Level 1" type="Node2D"]
+[node name="Level 1" type="Node2D" node_paths=PackedStringArray("player")]
+process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_tfwed")
 next_level_name = "2"
+player = NodePath("Torch")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -772,11 +774,10 @@ win_check_collision = NodePath("../WinCheck/CollisionShape2D")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
-[node name="Torch" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("3_sujd3")]
+[node name="Torch" parent="." instance=ExtResource("3_sujd3")]
 y_sort_enabled = true
 position = Vector2(143, 254)
 scale = Vector2(0.5, 0.5)
-gameManager = NodePath("")
 
 [node name="DeathArea" type="Area2D" parent="."]
 position = Vector2(119, 104)

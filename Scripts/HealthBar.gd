@@ -7,9 +7,8 @@ func _process(_delta):
 
 # Update the health bar
 func Update():
-	
 	if player != null:
 		if player.playerHealth >= 0:
 			value = player.playerHealth * 100 / player.maxHealth
 		else:
-			return
+			value = 0

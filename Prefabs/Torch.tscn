@@ -83,7 +83,6 @@ shape = SubResource("RectangleShape2D_pwtxm")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="FlameArea" type="Area2D" parent="." groups=["Player"]]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlameArea"]
 shape = SubResource("CircleShape2D_7omj6")
