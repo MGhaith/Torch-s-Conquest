@@ -35,4 +35,5 @@ func _on_interact():
 		win_check_collision.disabled = false
 	if torches_script != null:
 		torches_script.win_condition[current_torch] = true
+		print("clicked")
 		
