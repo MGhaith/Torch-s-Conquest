@@ -1,0 +1,114 @@
+[gd_scene load_steps=4 format=3 uid="uid://crnrfmk71nt8a"]
+
+[ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_12bhl"]
+[ext_resource type="Script" path="res://Scripts/DeathScreen.gd" id="2_6g61q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fi357"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="DeathScreenLayer" type="CanvasLayer"]
+script = ExtResource("1_12bhl")
+
+[node name="DeathScreen" type="Control" parent="." node_paths=PackedStringArray("canvas")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_6g61q")
+canvas = NodePath("..")
+
+[node name="PanelContainer" type="PanelContainer" parent="DeathScreen"]
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -175.0
+offset_right = 175.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fi357")
+
+[node name="MarginContainer" type="MarginContainer" parent="DeathScreen/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EmptySpace2" type="Control" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Label" type="Label" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "You Died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+text_direction = 1
+language = "English"
+
+[node name="Label2" type="Label" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+theme_override_font_sizes/font_size = 20
+text = "Better Luck Next Time "
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+text_direction = 1
+language = "English"
+
+[node name="EmptySpace3" type="Control" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="MarginContainer" type="MarginContainer" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NewGame Button" type="Button" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 20
+text = "New Game
+"
+
+[node name="EmptySpace" type="Control" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="MainMenu Button" type="Button" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 20
+text = "Main Menu
+"
+
+[node name="EmptySpace" type="Control" parent="DeathScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[connection signal="pressed" from="DeathScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NewGame Button" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="DeathScreen/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainMenu Button" to="." method="_on_main_menu_button_pressed"]

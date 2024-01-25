@@ -711,6 +711,7 @@ process_mode = 1
 script = ExtResource("1_yu6pm")
 next_level_name = "3"
 player = NodePath("Torch")
+pausable = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jx877")

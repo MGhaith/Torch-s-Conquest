@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn502d3qu5wf5"]
+[gd_scene load_steps=6 format=3 uid="uid://dn502d3qu5wf5"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/SceneSwitcher.gd" id="1_mfxuu"]
 [ext_resource type="AudioStream" uid="uid://dqqkiifuxp7lr" path="res://Assets/Audio/dungeon002_0.ogg" id="2_lg0xk"]
 [ext_resource type="PackedScene" uid="uid://b8d1iqlmls818" path="res://Scenes/pause_menu.tscn" id="2_oos37"]
 [ext_resource type="PackedScene" uid="uid://bwm2ufvhpxo6j" path="res://Scenes/MainMenu.tscn" id="2_p4onh"]
+[ext_resource type="PackedScene" uid="uid://crnrfmk71nt8a" path="res://Scenes/Death_screen.tscn" id="4_u23v2"]
 
 [node name="SceneSwitcher" type="Node"]
 process_mode = 3
@@ -14,6 +15,9 @@ stream = ExtResource("2_lg0xk")
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("2_oos37")]
 layer = 10
+game_manager = NodePath("..")
+
+[node name="DeathScreen" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("4_u23v2")]
 game_manager = NodePath("..")
 
 [node name="Menus" parent="." instance=ExtResource("2_p4onh")]

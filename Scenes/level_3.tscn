@@ -736,6 +736,7 @@ process_mode = 1
 script = ExtResource("1_p5jqf")
 next_level_name = "4"
 player = NodePath("Torch")
+pausable = true
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
