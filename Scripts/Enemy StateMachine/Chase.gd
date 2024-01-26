@@ -15,14 +15,11 @@ func enter(_msg := {}) -> void:
 	chase_speed = 30
 	player_in_area = true
 	player = get_ancestor(2).player
-	if get_parent().last_state == get_parent().states.get("attack"):
-		chase_speed = 10
 
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
 func physics_update(delta: float) -> void:
-	ray_cast.target_position = enemy.to_local(player.position)
-	if player_in_area and ray_cast.get_collider() == player:
+	if player_in_area:
 		var direction = (player.global_position - enemy.global_position)
 		animation_direction = get_facing_direction(direction)
 		enemy.velocity = direction * delta * chase_speed

@@ -47,8 +47,9 @@ func _on_patrol_sound_player_timeout():
 func _on_ray_cast_timer_timeout():
 	ray_cast.target_position = enemy.to_local(get_ancestor(2).player.position)
 	if ray_cast.get_collider() == get_ancestor(2).player:
+		if can_patrol:
+			last_position = enemy.global_position
 		can_patrol = false
-		last_position = enemy.global_position
 		transitioned.emit("chase")
 
 
