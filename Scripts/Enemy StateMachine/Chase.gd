@@ -10,6 +10,8 @@ func enter(_msg := {}) -> void:
 	print_debug("Chase")
 	$EnemyNoticePlayer.volume_db = 5
 	$EnemyNoticePlayer.play()
+	RayCastTimer.stop()
+	
 	chase_speed = 30
 	player_in_area = true
 	player = get_ancestor(2).player

@@ -5,7 +5,6 @@ var player_in_area = false
 var patrol_speed = 30
 
 @export var AttackHitCooldown: Timer
-@export var Delay: Timer
 
 var attackSpeed = 5
 

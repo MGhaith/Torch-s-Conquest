@@ -6,6 +6,7 @@ var speed = 120
 @export var enemy: CharacterBody2D
 @export var animator: AnimatedSprite2D
 @export var ray_cast: RayCast2D
+@export var RayCastTimer: Timer
 
 var player
 var can_follow = true

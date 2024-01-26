@@ -910,6 +910,7 @@ texture = ExtResource("1_pgid7")
 10:15/0 = 0
 10:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:15/0/physics_layer_0/angular_velocity = 0.0
+10:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:15/0 = 0
 11:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:15/0/physics_layer_0/angular_velocity = 0.0
@@ -1175,7 +1176,6 @@ stream = ExtResource("5_rs17a")
 volume_db = 5.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0313726, 0.0313726, 0.0313726, 1)
 
 [node name="Torch" parent="." instance=ExtResource("3_ygn37")]

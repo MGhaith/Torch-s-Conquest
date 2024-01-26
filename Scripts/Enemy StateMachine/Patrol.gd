@@ -27,11 +27,21 @@ func physics_update(delta: float) -> void:
 func _on_detection_area_area_entered(area):
 	if area.is_in_group("Player"):
 		get_ancestor(2).player = area.get_parent()
-		can_patrol = false
-		last_position = enemy.global_position
-		transitioned.emit("chase")
+		RayCastTimer.start()
 	
 
 
 func _on_patrol_sound_player_timeout():
 	$EnemyPatrolPlayer.play()
+
+
+func _on_ray_cast_timer_timeout():
+	ray_cast.target_position = enemy.to_local(get_ancestor(2).player.position)
+	if ray_cast.get_collider() == get_ancestor(2).player:
+		can_patrol = false
+		last_position = enemy.global_position
+		transitioned.emit("chase")
+
+
+func _on_detection_area_area_exited(area):
+	RayCastTimer.stop()
