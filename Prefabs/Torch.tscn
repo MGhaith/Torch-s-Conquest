@@ -53,7 +53,7 @@ color = Color(0.945098, 0.262745, 0.164706, 1)
 texture = ExtResource("2_fd6el")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(3.5, 3.5)
 
 [node name="HealthBar" type="Control" parent="Camera2D"]
 layout_mode = 3

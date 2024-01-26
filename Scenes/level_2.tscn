@@ -766,8 +766,8 @@ shape = SubResource("RectangleShape2D_t3012")
 disabled = true
 
 [node name="Wood" parent="." instance=ExtResource("6_5k4ka")]
-position = Vector2(41, 108)
-scale = Vector2(0.168429, 0.168429)
+position = Vector2(41, 102)
+scale = Vector2(0.0172524, 0.0172524)
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]

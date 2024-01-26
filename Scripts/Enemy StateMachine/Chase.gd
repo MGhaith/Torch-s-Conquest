@@ -4,6 +4,8 @@ class_name EnemyChase
 var player_in_area = false
 var chase_speed
 
+@export var ray_cast: RayCast2D
+
 # Virtual function. Called by the state machine upon changing the active state. The `msg` parameter
 # is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
@@ -17,7 +19,8 @@ func enter(_msg := {}) -> void:
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
 func physics_update(delta: float) -> void:
-	if player_in_area:
+	ray_cast.target_position = enemy.to_local(player.position)
+	if player_in_area and ray_cast.get_collider() == player:
 		var direction = (player.global_position - enemy.global_position)
 		enemy.velocity = direction * delta * chase_speed
 		enemy.move_and_slide()

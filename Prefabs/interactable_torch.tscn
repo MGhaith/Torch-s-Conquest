@@ -64,7 +64,7 @@ animations = [{
 radius = 8.14168
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2wy1"]
-size = Vector2(70, 66)
+size = Vector2(24, 34)
 
 [node name="InteractableTorch" type="StaticBody2D" node_paths=PackedStringArray("light", "flashingTimer", "interaction_area", "Light", "Shadow")]
 script = ExtResource("1_4mm0x")
@@ -108,6 +108,7 @@ autostart = true
 [node name="Interaction_area" parent="." instance=ExtResource("4_8srno")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_area"]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_a2wy1")
 
 [connection signal="timeout" from="TorchLightTimer" to="." method="_on_torch_light_timer_timeout"]

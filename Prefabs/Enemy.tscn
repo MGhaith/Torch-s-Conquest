@@ -1,45 +1,144 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7c3x0bka3wot"]
+[gd_scene load_steps=26 format=3 uid="uid://c7c3x0bka3wot"]
 
-[ext_resource type="Texture2D" uid="uid://b8qpm4gcnletc" path="res://Assets/Monster/Character_sheet.png" id="1_7o3us"]
 [ext_resource type="Script" path="res://Scripts/EnmyState.gd" id="1_p4oeg"]
+[ext_resource type="Texture2D" uid="uid://x5t733pu1cnj" path="res://Assets/Monster/Enemy.png" id="2_vxusq"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/StateMachine.gd" id="3_16k50"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Chase.gd" id="4_61gv0"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Patrol.gd" id="5_imk81"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Attack.gd" id="6_tavy4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7xens"]
-atlas = ExtResource("1_7o3us")
-region = Rect2(0, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_75km3"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(189, 0, 63, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ujpt4"]
-atlas = ExtResource("1_7o3us")
-region = Rect2(100, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_isq8x"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(189, 64, 63, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xl4cc"]
-atlas = ExtResource("1_7o3us")
-region = Rect2(200, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfn2l"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(189, 128, 63, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2f2h5"]
-atlas = ExtResource("1_7o3us")
-region = Rect2(300, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cwxb"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(189, 192, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmayp"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(0, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iab7t"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(0, 64, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruiqo"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(0, 128, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj61s"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(0, 192, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pm3m"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(63, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dq3u"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(63, 64, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o786g"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(63, 128, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8pgb"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(63, 192, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evqmc"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(126, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmh7m"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(126, 64, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0wbl"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(126, 128, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hag1t"]
+atlas = ExtResource("2_vxusq")
+region = Rect2(126, 192, 63, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e1bqp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7xens")
+"texture": SubResource("AtlasTexture_75km3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ujpt4")
+"texture": SubResource("AtlasTexture_isq8x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xl4cc")
+"texture": SubResource("AtlasTexture_qfn2l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2f2h5")
+"texture": SubResource("AtlasTexture_3cwxb")
 }],
 "loop": true,
-"name": &"Enemy",
+"name": &"Bottom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmayp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iab7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruiqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj61s")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pm3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dq3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o786g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8pgb")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evqmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmh7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0wbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hag1t")
+}],
+"loop": true,
+"name": &"Top",
 "speed": 5.0
 }]
 
@@ -56,7 +155,8 @@ animator = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e1bqp")
-animation = &"Enemy"
+animation = &"Bottom"
+offset = Vector2(-8, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xtp76")
@@ -72,8 +172,9 @@ shape = SubResource("CircleShape2D_7wk3w")
 script = ExtResource("3_16k50")
 initial_state = NodePath("Patrol")
 
-[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator")]
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("ray_cast", "enemy", "animator")]
 script = ExtResource("4_61gv0")
+ray_cast = NodePath("../../RayCast2D")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 
@@ -91,7 +192,10 @@ animator = NodePath("../../AnimatedSprite2D")
 [node name="AttackHitCooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
 [connection signal="area_entered" from="detection_area" to="StateMachine/Patrol" method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="detection_area" to="." method="_on_detection_area_area_exited"]
 [connection signal="area_exited" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_area_exited"]
 [connection signal="body_entered" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="StateMachine/Attack" method="_on_detection_area_body_exited"]

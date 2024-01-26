@@ -1121,52 +1121,52 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Wood" parent="Woods" instance=ExtResource("7_8ehwn")]
 position = Vector2(118, 425)
-scale = Vector2(0.168429, 0.168429)
+scale = Vector2(0.0205549, 0.0205549)
 
 [node name="Wood2" parent="Woods" instance=ExtResource("7_8ehwn")]
 position = Vector2(200, 333)
-scale = Vector2(0.168429, 0.168429)
+scale = Vector2(0.0217217, 0.0217217)
 
 [node name="Wood3" parent="Woods" instance=ExtResource("7_8ehwn")]
 position = Vector2(473, 475)
-scale = Vector2(0.168429, 0.168429)
+scale = Vector2(0.0215097, 0.0215097)
 
 [node name="Wood6" parent="Woods" instance=ExtResource("7_8ehwn")]
 position = Vector2(55, 189)
-scale = Vector2(0.168429, 0.168429)
+scale = Vector2(0.0207597, 0.0207597)
 
 [node name="Wood7" parent="Woods" instance=ExtResource("7_8ehwn")]
 position = Vector2(48, 57)
-scale = Vector2(0.168429, 0.168429)
+scale = Vector2(0.0256962, 0.0256962)
 
 [node name="Wood10" parent="Woods" instance=ExtResource("7_8ehwn")]
-position = Vector2(295, 97)
-scale = Vector2(0.168429, 0.168429)
+position = Vector2(297, 95)
+scale = Vector2(0.0326649, 0.0326649)
 
 [node name="Wood11" parent="Woods" instance=ExtResource("7_8ehwn")]
 z_index = 1
 position = Vector2(512, -173)
-scale = Vector2(0.168429, 0.168429)
+scale = Vector2(0.0322962, 0.0322962)
 
 [node name="Wood13" parent="Woods" instance=ExtResource("7_8ehwn")]
 z_index = 1
 position = Vector2(112, -158)
-scale = Vector2(0.168429, 0.168429)
+scale = Vector2(0.0307419, 0.0307419)
 
 [node name="Wood14" parent="Woods" instance=ExtResource("7_8ehwn")]
 z_index = 1
-position = Vector2(368, -317)
-scale = Vector2(0.168429, 0.168429)
+position = Vector2(366, -314)
+scale = Vector2(0.020624, 0.020624)
 
 [node name="Wood15" parent="Woods" instance=ExtResource("7_8ehwn")]
 z_index = 1
-position = Vector2(148, -412)
-scale = Vector2(0.168429, 0.168429)
+position = Vector2(148, -409)
+scale = Vector2(0.0225549, 0.0225549)
 
 [node name="Wood16" parent="Woods" instance=ExtResource("7_8ehwn")]
 z_index = 1
-position = Vector2(-81, -218)
-scale = Vector2(0.168429, 0.168429)
+position = Vector2(-80, -243)
+scale = Vector2(0.0285915, 0.0285915)
 
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
 [connection signal="body_entered" from="WinCheck" to="WinCheck" method="_on_body_entered"]

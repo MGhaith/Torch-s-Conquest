@@ -9,8 +9,11 @@ var speed = 120
 var player
 
 func _ready():
-	animator.play("Enemy")
+	pass
 
+
+func _process(delta):
+	pass
 		
 		
 func get_ancestor(level: int):
