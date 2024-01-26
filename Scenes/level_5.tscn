@@ -1067,6 +1067,7 @@ stream = ExtResource("5_pf6jy")
 volume_db = 5.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0605303, 0.0605303, 0.0605304, 1)
 
 [node name="WinCheck" type="Area2D" parent="."]
@@ -1088,7 +1089,7 @@ rotates = false
 [node name="Enemy" parent="EnemyPath1/PathFollow2D" instance=ExtResource("5_qu3ka")]
 position = Vector2(-1, 1)
 rotation = 1.5708
-scale = Vector2(0.498409, 0.498409)
+scale = Vector2(0.5, 0.5)
 
 [node name="EnemyPath2" type="Path2D" parent="."]
 position = Vector2(1, -6)
