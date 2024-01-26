@@ -14,7 +14,10 @@ config/name="Torch's Conquest: Depths of Shadow"
 config/tags=PackedStringArray("2_d", "game_jam", "top_down")
 run/main_scene="res://Scenes/scene_switcher.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/show_image=false
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Assets/JamSmall.png"
+boot_splash/fullsize=false
+boot_splash/minimum_display_time=500
 
 [autoload]
 

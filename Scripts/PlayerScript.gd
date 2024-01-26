@@ -15,6 +15,9 @@ var playerHealth : float = 100
 @export var maxSpeed : float = 50
 @export var acceleration : float = 5 
 var canMove : bool = true
+@export_category("Sounds")
+@export var movingSFX : AudioStream
+@export var deathSFX : AudioStreamMP3
 
 func _ready():
 	randomize()
@@ -70,6 +73,7 @@ func addHealth(value : float):
 # Remove health 
 func removeHealth(value : float):
 	playerHealth -= value
+	$EnemyHitPlayer.play()
 	if playerHealth <= 0:
 		printt("player dead")
 	else:

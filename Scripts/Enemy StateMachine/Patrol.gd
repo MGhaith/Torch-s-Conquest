@@ -11,7 +11,7 @@ var can_patrol = true
 # is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	print_debug("Patrol")
-	
+	$PatrolSoundPlayer.start()
 
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
@@ -31,3 +31,7 @@ func _on_detection_area_area_entered(area):
 		last_position = enemy.global_position
 		transitioned.emit("chase")
 	
+
+
+func _on_patrol_sound_player_timeout():
+	$EnemyPatrolPlayer.play()

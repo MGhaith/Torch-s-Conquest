@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwu6j78xhohru"]
+[gd_scene load_steps=16 format=3 uid="uid://bwu6j78xhohru"]
 
 [ext_resource type="Script" path="res://Scripts/interactable_torch.gd" id="1_4mm0x"]
 [ext_resource type="Texture2D" uid="uid://cy47w80lbp0rm" path="res://Assets/Torch Animated V2.png" id="2_pvbwa"]
 [ext_resource type="Texture2D" uid="uid://d2ufn0oqcu6s6" path="res://Assets/flashlight_reverse.png" id="3_rcgup"]
 [ext_resource type="PackedScene" uid="uid://7gvd8vm6bfjl" path="res://Prefabs/interaction_area.tscn" id="4_8srno"]
+[ext_resource type="AudioStream" uid="uid://c4b33ul37hak3" path="res://Assets/Audio/torchBurning.ogg" id="5_t0cjv"]
+[ext_resource type="AudioStream" uid="uid://cejlcknfv72s7" path="res://Assets/Audio/doorwood_open.wav" id="6_s88x5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs5lm"]
 atlas = ExtResource("2_pvbwa")
@@ -110,5 +112,14 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_area"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_a2wy1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t0cjv")
+volume_db = 5.0
+max_distance = 100.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_s88x5")
+volume_db = 5.0
 
 [connection signal="timeout" from="TorchLightTimer" to="." method="_on_torch_light_timer_timeout"]

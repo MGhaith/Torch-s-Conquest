@@ -1,10 +1,11 @@
-[gd_scene load_steps=90 format=3 uid="uid://blnsojkmff14x"]
+[gd_scene load_steps=91 format=3 uid="uid://blnsojkmff14x"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_6avgs"]
 [ext_resource type="Texture2D" uid="uid://cp66qkc0piymv" path="res://Assets/dungeon_tiles_0.png" id="1_pgid7"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="2_c3bh5"]
 [ext_resource type="Script" path="res://Scripts/MultipleTorches.gd" id="3_esto6"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="3_ygn37"]
+[ext_resource type="AudioStream" uid="uid://cejlcknfv72s7" path="res://Assets/Audio/doorwood_open.wav" id="5_rs17a"]
 [ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="7_c45bt"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="11_owj8b"]
 
@@ -1168,6 +1169,10 @@ position = Vector2(170, 295)
 scale = Vector2(0.891693, 0.891693)
 torches_script = NodePath("..")
 current_torch = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MultipleTorches"]
+stream = ExtResource("5_rs17a")
+volume_db = 5.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0313726, 0.0313726, 0.0313726, 1)

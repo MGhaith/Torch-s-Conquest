@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyvfu64r7c3rm"]
+[gd_scene load_steps=10 format=3 uid="uid://dyvfu64r7c3rm"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_pqhpa"]
 [ext_resource type="Texture2D" uid="uid://d2ufn0oqcu6s6" path="res://Assets/flashlight_reverse.png" id="2_fd6el"]
 [ext_resource type="Texture2D" uid="uid://df3flbiqfbbv2" path="res://Assets/rpgcritter update formatted transparent.png" id="3_ppy7a"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="4_c0j4l"]
+[ext_resource type="AudioStream" uid="uid://dlq08gq5ccxjs" path="res://Assets/Audio/enemy attack.wav" id="5_qfilc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mguag"]
 bg_color = Color(1, 1, 1, 1)
@@ -34,9 +35,6 @@ texture = ExtResource("3_ppy7a")
 hframes = 15
 vframes = 7
 frame = 13
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 
 [node name="LightNodes" type="Node2D" parent="."]
 
@@ -97,6 +95,11 @@ process_callback = 0
 autostart = true
 
 [node name="HealthDecreaseTimer" type="Timer" parent="."]
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="EnemyHitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qfilc")
 
 [connection signal="timeout" from="FlashingLightTimer" to="." method="_on_flashing_light_timer_timeout"]
 [connection signal="timeout" from="HealthDecreaseTimer" to="." method="_on_health_decrease_timer_timeout"]

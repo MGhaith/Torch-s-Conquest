@@ -1,11 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://c7c3x0bka3wot"]
+[gd_scene load_steps=28 format=3 uid="uid://c7c3x0bka3wot"]
 
 [ext_resource type="Script" path="res://Scripts/EnmyState.gd" id="1_p4oeg"]
 [ext_resource type="Texture2D" uid="uid://x5t733pu1cnj" path="res://Assets/Monster/Enemy.png" id="2_vxusq"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/StateMachine.gd" id="3_16k50"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Chase.gd" id="4_61gv0"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Patrol.gd" id="5_imk81"]
+[ext_resource type="AudioStream" uid="uid://0uvmscxs2dou" path="res://Assets/Audio/enemy notice.wav" id="5_tymcq"]
 [ext_resource type="Script" path="res://Scripts/Enemy StateMachine/Attack.gd" id="6_tavy4"]
+[ext_resource type="AudioStream" uid="uid://boa1l6ykuftk4" path="res://Assets/Audio/enemy patrol.wav" id="7_gv5bh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75km3"]
 atlas = ExtResource("2_vxusq")
@@ -178,10 +180,20 @@ ray_cast = NodePath("../../RayCast2D")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 
+[node name="EnemyNoticePlayer" type="AudioStreamPlayer" parent="StateMachine/Chase"]
+stream = ExtResource("5_tymcq")
+
 [node name="Patrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator")]
 script = ExtResource("5_imk81")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
+
+[node name="PatrolSoundPlayer" type="Timer" parent="StateMachine/Patrol"]
+wait_time = 4.0
+
+[node name="EnemyPatrolPlayer" type="AudioStreamPlayer2D" parent="StateMachine/Patrol"]
+stream = ExtResource("7_gv5bh")
+max_distance = 300.0
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "enemy", "animator")]
 script = ExtResource("6_tavy4")
@@ -199,4 +211,5 @@ wait_time = 0.5
 [connection signal="area_exited" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_area_exited"]
 [connection signal="body_entered" from="detection_area" to="StateMachine/Chase" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="StateMachine/Attack" method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="StateMachine/Patrol/PatrolSoundPlayer" to="StateMachine/Patrol" method="_on_patrol_sound_player_timeout"]
 [connection signal="timeout" from="AttackHitCooldown" to="StateMachine/Attack" method="_on_attack_hit_cooldown_timeout"]

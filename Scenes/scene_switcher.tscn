@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn502d3qu5wf5"]
+[gd_scene load_steps=7 format=3 uid="uid://dn502d3qu5wf5"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/SceneSwitcher.gd" id="1_mfxuu"]
+[ext_resource type="AudioStream" uid="uid://b6e1qf3buc10d" path="res://Assets/Audio/playerDeath.mp3" id="2_hc36w"]
 [ext_resource type="AudioStream" uid="uid://dqqkiifuxp7lr" path="res://Assets/Audio/dungeon002_0.ogg" id="2_lg0xk"]
 [ext_resource type="PackedScene" uid="uid://b8d1iqlmls818" path="res://Scenes/pause_menu.tscn" id="2_oos37"]
 [ext_resource type="PackedScene" uid="uid://bwm2ufvhpxo6j" path="res://Scenes/MainMenu.tscn" id="2_p4onh"]
@@ -9,9 +10,10 @@
 [node name="SceneSwitcher" type="Node"]
 process_mode = 3
 script = ExtResource("1_mfxuu")
+deathSFX = ExtResource("2_hc36w")
+dungeonSFX = ExtResource("2_lg0xk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_lg0xk")
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("2_oos37")]
 layer = 10
