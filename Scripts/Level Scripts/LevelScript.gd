@@ -53,7 +53,7 @@ func SetLabels(level_Number : int):
 					next_level_name = "level2"
 				3:
 					levelNumber.text = "Level 3:"
-					levelName.text = "Hidden Pathway"
+					levelName.text = "Hidden Path"
 					next_level_name = "level3"
 				4:
 					levelNumber.text = "Level 4:"

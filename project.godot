@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="PS Game Jam 2024"
+config/name="Torch's Conquest: Depths of Shadow"
 config/tags=PackedStringArray("2_d", "game_jam", "top_down")
 run/main_scene="res://Scenes/scene_switcher.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
