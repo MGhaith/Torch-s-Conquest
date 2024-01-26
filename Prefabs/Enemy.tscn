@@ -159,6 +159,7 @@ ray_cast = NodePath("RayCast2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e1bqp")
 animation = &"Bottom"
+frame_progress = 0.787689
 offset = Vector2(-8, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -6,7 +6,7 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		if !taken:
 			taken = true
-			body.addHealth(20)
+			body.addHealth(30)
 			self.visible = false
 			$AudioStreamPlayer.play()
 

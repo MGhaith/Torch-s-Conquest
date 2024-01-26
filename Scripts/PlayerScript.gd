@@ -12,12 +12,13 @@ extends CharacterBody2D
 @export var damageHealth : float = 2
 var playerHealth : float = 100
 @export_subgroup("Speed")
-@export var maxSpeed : float = 50
+@export var maxSpeed : float = 30
 @export var acceleration : float = 5 
 var canMove : bool = true
-@export_category("Sounds")
-@export var movingSFX : AudioStream
-@export var deathSFX : AudioStreamMP3
+@export_category("Audio")
+@export var audioPlayer : AudioStreamPlayer
+@export_category("Animation")
+@export var animPlayer : AnimationPlayer
 
 func _ready():
 	randomize()
@@ -35,10 +36,36 @@ func _process(_delta):
 		
 		# Setting moving direction
 		var direction = get_input_dir()
+		
+		if direction != Vector2.ZERO:
+			if !audioPlayer.playing:
+				audioPlayer.play()
+		else:
+			audioPlayer.stop()
+		
 		if direction:
 			velocity.x = move_toward(velocity.x, maxSpeed * direction.x, acceleration)
 			velocity.y = move_toward(velocity.y, maxSpeed * direction.y, acceleration)
+			if direction.y < 0:
+				animPlayer.play("walk-top")
+			elif direction.y > 0:
+				animPlayer.play("walk-down")
+			if direction.x < 0:
+				if direction.y < 0:
+					animPlayer.play("walk-top")
+				elif direction.y > 0:
+					animPlayer.play("walk-down")
+				else:
+					animPlayer.play("walk-left")
+			elif direction.x > 0:
+				if direction.y < 0:
+					animPlayer.play("walk-top")
+				elif direction.y > 0:
+					animPlayer.play("walk-down")
+				else:
+					animPlayer.play("walk-right")
 		else:
+			animPlayer.seek(0)
 			velocity.x = move_toward(velocity.x, 0, maxSpeed)
 			velocity.y = move_toward(velocity.y, 0, maxSpeed)
 	else:
@@ -68,43 +95,32 @@ func addHealth(value : float):
 	playerHealth += value
 	if playerHealth > maxHealth:
 		playerHealth = maxHealth
-	printt("Added Health: ", value, " New Health: ", playerHealth)
 
 # Remove health 
 func removeHealth(value : float):
 	playerHealth -= value
 	$EnemyHitPlayer.play()
-	if playerHealth <= 0:
-		printt("player dead")
-	else:
-		printt("Damaged Health: ", value, " New Health: ", playerHealth)
-
-# SkillA (Not used anymore)
-#func SkillA():
-	#light.texture_scale = 3
-	#damageHealth = 5
-	#flameAreaCollision.set_scale(Vector2(1.5, 1.5))
 
 # Sprinting Skill
 func FireSprint():
 	light.texture_scale = 2.5
 	damageHealth = 3
 	flameAreaCollision.set_scale(Vector2(1.1, 1.1))
-	maxSpeed = 150
+	maxSpeed = 50
 
 #SkillB
 func SkillB():
 	light.texture_scale = 1
 	damageHealth = 1
 	flameAreaCollision.set_scale(Vector2(0.5, 0.5))
-	maxSpeed = 50
+	maxSpeed = 10
 
 # No-Skill reset
 func SkillReset():
 	light.texture_scale = 2
 	damageHealth = 2
 	flameAreaCollision.set_scale(Vector2(1, 1))
-	maxSpeed = 100
+	maxSpeed = 30
 
 # Flashing Light effect
 func _on_flashing_light_timer_timeout():
