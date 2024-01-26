@@ -15,11 +15,15 @@ var game_paused : bool = false:
 
 var passedHealth : float
 
+@export var deathSFX : AudioStreamMP3
+@export var dungeonSFX : AudioStreamOggVorbis
+var played : bool
 @onready var current_level = $Menus
 @onready var audioPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	played = false
 	passedHealth = 100
 	current_level.level_changed.connect(handle_level_changed)
 
@@ -27,6 +31,13 @@ func _input(event : InputEvent):
 	if event.is_action_pressed("Pause"):
 		game_paused = !game_paused
 
+func _process(_delta):
+	if passedHealth == 0 && !played:
+		played = true
+		audioPlayer.stop()
+		audioPlayer.volume_db = 0
+		audioPlayer.set_stream(deathSFX)
+		audioPlayer.play()
 
 func handle_level_changed(next_level_name : String):
 	var next_level
@@ -74,6 +85,8 @@ func handle_level_changed(next_level_name : String):
 		next_level.player.StartHealthTimer()
 		next_level.player.playerHealth = passedHealth
 		if !audioPlayer.playing:
+			played = false
+			audioPlayer.set_stream(dungeonSFX)
 			audioPlayer.volume_db = 10
 			audioPlayer.play()
 	next_level.level_changed.connect(handle_level_changed)

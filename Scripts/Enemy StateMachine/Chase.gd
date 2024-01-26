@@ -10,6 +10,8 @@ var chase_speed
 # is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	print_debug("Chase")
+	$EnemyNoticePlayer.volume_db = 5
+	$EnemyNoticePlayer.play()
 	chase_speed = 30
 	player_in_area = true
 	player = get_ancestor(2).player

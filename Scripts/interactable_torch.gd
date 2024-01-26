@@ -13,9 +13,11 @@ extends StaticBody2D
 
 @export_category("Torch")
 @export var current_torch: int
+var interacted : bool
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
+	interacted = false
 	$AnimatedSprite2D.play("Off")
 	randomize()
 
@@ -31,14 +33,18 @@ func _on_torch_light_timer_timeout():
 	
 	
 func _on_interact():
-	$AnimatedSprite2D.play("Lit")
-	Light.enabled = true
-	Shadow.enabled = true
-	if tile_map != null:
-		tile_map.set_layer_enabled(3, true)
-	if win_check_collision != null:
-		win_check_collision.disabled = false
-	if torches_script != null:
-		torches_script.win_condition[current_torch] = true
-		print("clicked")
-		
+	if !interacted:
+		interacted = true
+		$AudioStreamPlayer2D.play()
+		$AnimatedSprite2D.play("Lit")
+		Light.enabled = true
+		Shadow.enabled = true
+		if tile_map != null:
+			tile_map.set_layer_enabled(3, true)
+			$AudioStreamPlayer.play()
+		if win_check_collision != null:
+			win_check_collision.disabled = false
+		if torches_script != null:
+			torches_script.win_condition[current_torch] = true
+			print("clicked")
+

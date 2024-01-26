@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://issub7jsl3oj"]
+[gd_scene load_steps=5 format=3 uid="uid://issub7jsl3oj"]
 
 [ext_resource type="Texture2D" uid="uid://dl6ymc8kgngnq" path="res://Assets/Wood.png" id="1_qy46d"]
 [ext_resource type="Script" path="res://Scripts/Wood.gd" id="2_u3f5v"]
+[ext_resource type="AudioStream" uid="uid://mejuuaeko11f" path="res://Assets/Audio/wood.ogg" id="3_wk3cl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fks2e"]
 radius = 22.3191
@@ -20,4 +21,8 @@ rotation = 1.02549
 scale = Vector2(4.79389, 4.79389)
 shape = SubResource("CapsuleShape2D_fks2e")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wk3cl")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

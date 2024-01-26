@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://daff4y8mg062p"
+path="res://.godot/imported/wall open.mp3-89886d967a973fce1ea9e947f6ab2b34.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/wall open.mp3"
+dest_files=["res://.godot/imported/wall open.mp3-89886d967a973fce1ea9e947f6ab2b34.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
