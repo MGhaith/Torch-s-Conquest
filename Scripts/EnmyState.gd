@@ -18,11 +18,6 @@ const FACING = {
 var animation_direction
 var player
 
-func _ready():
-	pass
-			
-
-
 func get_facing_vector(vec_to_player):
 	var min_angle = 360
 	var facing = Vector2()

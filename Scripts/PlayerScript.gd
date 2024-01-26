@@ -12,7 +12,7 @@ extends CharacterBody2D
 @export var damageHealth : float = 2
 var playerHealth : float = 100
 @export_subgroup("Speed")
-@export var maxSpeed : float = 30
+@export var maxSpeed : float = 50
 @export var acceleration : float = 5 
 var canMove : bool = true
 @export_category("Audio")
@@ -104,9 +104,9 @@ func removeHealth(value : float):
 # Sprinting Skill
 func FireSprint():
 	light.texture_scale = 2.5
-	damageHealth = 3
+	damageHealth = 8
 	flameAreaCollision.set_scale(Vector2(1.1, 1.1))
-	maxSpeed = 50
+	maxSpeed = 70
 
 #SkillB
 func SkillB():
@@ -120,7 +120,7 @@ func SkillReset():
 	light.texture_scale = 2
 	damageHealth = 2
 	flameAreaCollision.set_scale(Vector2(1, 1))
-	maxSpeed = 30
+	maxSpeed = 40
 
 # Flashing Light effect
 func _on_flashing_light_timer_timeout():
