@@ -1175,6 +1175,7 @@ stream = ExtResource("5_rs17a")
 volume_db = 5.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0313726, 0.0313726, 0.0313726, 1)
 
 [node name="Torch" parent="." instance=ExtResource("3_ygn37")]
@@ -1185,8 +1186,9 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(-16, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinCheck"]
-position = Vector2(152, 28)
+position = Vector2(152, 25)
 shape = SubResource("RectangleShape2D_xng02")
+disabled = true
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_btvjx")
@@ -1198,7 +1200,7 @@ rotates = false
 
 [node name="Enemy" parent="EnemyPath/PathFollow2D" instance=ExtResource("11_owj8b")]
 rotation = 3.07178
-scale = Vector2(0.520208, 0.520208)
+scale = Vector2(0.5, 0.5)
 
 [node name="Wood" parent="." instance=ExtResource("7_c45bt")]
 position = Vector2(236, 301)
@@ -1217,4 +1219,3 @@ position = Vector2(281, 68)
 scale = Vector2(0.0299442, 0.0299442)
 
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
-[connection signal="body_entered" from="WinCheck" to="WinCheck" method="_on_body_entered"]
