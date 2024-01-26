@@ -110,14 +110,14 @@ func FireSprint():
 
 #SkillB
 func SkillB():
-	light.texture_scale = 1
+	light.texture_scale = 0.5
 	damageHealth = 1
 	flameAreaCollision.set_scale(Vector2(0.5, 0.5))
 	maxSpeed = 10
 
 # No-Skill reset
 func SkillReset():
-	light.texture_scale = 2
+	light.texture_scale = 1.5
 	damageHealth = 2
 	flameAreaCollision.set_scale(Vector2(1, 1))
 	maxSpeed = 40
