@@ -994,7 +994,7 @@ size = Vector2(10, 10)
 
 [sub_resource type="Curve2D" id="Curve2D_4m06c"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 21, 365, 0, 0, 0, 0, 21, 343, 0, 0, 0, 0, 20, 320, 0, 0, 0, 0, 24, 309, 0, 0, 0, 0, 38, 308, 0, 0, 0, 0, 42, 321, 0, 0, 0, 0, 44, 346, 0, 0, 0, 0, 43, 357, 0, 0, 0, 0, 40, 366, 0, 0, 0, 0, 31, 369, 0, 0, 0, 0, 21, 365)
+"points": PackedVector2Array(0, 0, 0, 0, 21, 365, 0, 0, 0, 0, 21, 343, 0, 0, 0, 0, 20, 320, 0, 0, 0, 0, 24, 309, 0, 0, 0, 0, 36, 309, 0, 0, 0, 0, 37, 320, 0, 0, 0, 0, 37, 343, 0, 0, 0, 0, 38, 352, 0, 0, 0, 0, 34, 364, 0, 0, 0, 0, 27, 368, 0, 0, 0, 0, 21, 365)
 }
 point_count = 11
 
@@ -1067,6 +1067,7 @@ stream = ExtResource("5_pf6jy")
 volume_db = 5.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0605303, 0.0605303, 0.0605304, 1)
 
 [node name="WinCheck" type="Area2D" parent="."]
@@ -1081,17 +1082,18 @@ disabled = true
 curve = SubResource("Curve2D_4m06c")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath1"]
-position = Vector2(21, 365)
+position = Vector2(35.7032, 358.89)
 rotation = -1.5708
+progress = 119.05
 rotates = false
 
 [node name="Enemy" parent="EnemyPath1/PathFollow2D" instance=ExtResource("5_qu3ka")]
 position = Vector2(-1, 1)
 rotation = 1.5708
-scale = Vector2(0.498409, 0.498409)
+scale = Vector2(0.327548, 0.327548)
 
 [node name="EnemyPath2" type="Path2D" parent="."]
-position = Vector2(1, -6)
+position = Vector2(1, 0)
 curve = SubResource("Curve2D_fsgho")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath2"]
@@ -1101,7 +1103,7 @@ rotates = false
 [node name="Enemy3" parent="EnemyPath2/PathFollow2D" node_paths=PackedStringArray("enemy", "animator") instance=ExtResource("5_qu3ka")]
 z_index = 1
 position = Vector2(26, 5)
-scale = Vector2(0.498409, 0.498409)
+scale = Vector2(0.304242, 0.304242)
 enemy = NodePath("../../../EnemyPath1/PathFollow2D/Enemy")
 animator = NodePath("../../../EnemyPath1/PathFollow2D/Enemy/AnimatedSprite2D")
 
@@ -1120,7 +1122,7 @@ enemy = NodePath("../../../EnemyPath1/PathFollow2D/Enemy")
 animator = NodePath("../../../EnemyPath1/PathFollow2D/Enemy/AnimatedSprite2D")
 
 [node name="Torch" parent="." instance=ExtResource("4_62jb8")]
-position = Vector2(112, 477)
+position = Vector2(99, 388)
 scale = Vector2(0.5, 0.5)
 
 [node name="Woods" type="Node2D" parent="."]

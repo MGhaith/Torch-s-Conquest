@@ -22,7 +22,8 @@ func enter(_msg := {}) -> void:
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
 func physics_update(delta: float) -> void:
-	if player_in_area:
+	ray_cast.target_position = enemy.to_local(player.position)
+	if player_in_area and ray_cast.get_collider() == player:
 		var direction = (player.global_position - enemy.global_position)
 		enemy.velocity = direction * delta * attackSpeed
 		enemy.move_and_slide()
