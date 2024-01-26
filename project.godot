@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Assets/JamSmall.png"
 boot_splash/fullsize=false
-boot_splash/minimum_display_time=500
+boot_splash/minimum_display_time=1800
 
 [autoload]
 
