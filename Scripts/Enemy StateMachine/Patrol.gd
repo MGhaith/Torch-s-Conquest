@@ -22,6 +22,15 @@ func physics_update(delta: float) -> void:
 		can_patrol = true
 	elif can_patrol:
 		Pathing.progress += patrol_speed * delta
+		animator.play(get_patrol_direction())
+
+
+
+func get_patrol_direction():
+	if Pathing.progress_ratio > 0.25 and Pathing.progress_ratio < 0.7:
+		return "Right"
+	else:
+		return "Left"
 
 
 func _on_detection_area_area_entered(area):

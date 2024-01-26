@@ -24,8 +24,19 @@ func physics_update(delta: float) -> void:
 	ray_cast.target_position = enemy.to_local(player.position)
 	if player_in_area and ray_cast.get_collider() == player:
 		var direction = (player.global_position - enemy.global_position)
+		animation_direction = get_facing_direction(direction)
 		enemy.velocity = direction * delta * chase_speed
 		enemy.move_and_slide()
+	
+		match  animation_direction:
+			"right":
+				animator.play("Right")
+			"left":
+				animator.play("Left")
+			"up":
+				animator.play("Top")
+			"down":
+				animator.play("Bottom")
 
 
 func _on_detection_area_area_exited(area):

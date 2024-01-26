@@ -1186,7 +1186,7 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(-16, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinCheck"]
-position = Vector2(152, 25)
+position = Vector2(152, 27)
 shape = SubResource("RectangleShape2D_xng02")
 disabled = true
 
@@ -1194,8 +1194,9 @@ disabled = true
 curve = SubResource("Curve2D_btvjx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(184, 127)
+position = Vector2(218.981, 164.593)
 rotation = -3.04664
+progress = 234.665
 rotates = false
 
 [node name="Enemy" parent="EnemyPath/PathFollow2D" instance=ExtResource("11_owj8b")]
