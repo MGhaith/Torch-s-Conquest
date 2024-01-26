@@ -5,12 +5,14 @@ var speed = 120
 
 @export var enemy: CharacterBody2D
 @export var animator: AnimatedSprite2D
-
+@export var ray_cast: RayCast2D
 
 var player
+var can_follow = true
 
 func _ready():
 	pass
+			
 
 
 func get_ancestor(level: int):
@@ -22,4 +24,4 @@ func get_ancestor(level: int):
 		else:
 			return null
 			
-	return parent	
+	return parent

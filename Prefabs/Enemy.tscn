@@ -150,10 +150,11 @@ radius = 23.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wk3w"]
 radius = 37.53
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("enemy", "animator")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("enemy", "animator", "ray_cast")]
 script = ExtResource("1_p4oeg")
 enemy = NodePath(".")
 animator = NodePath("AnimatedSprite2D")
+ray_cast = NodePath("RayCast2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e1bqp")
@@ -175,19 +176,20 @@ shape = SubResource("CircleShape2D_7wk3w")
 script = ExtResource("3_16k50")
 initial_state = NodePath("Patrol")
 
-[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("ray_cast", "enemy", "animator")]
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator", "ray_cast")]
 script = ExtResource("4_61gv0")
-ray_cast = NodePath("../../RayCast2D")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
+ray_cast = NodePath("../../RayCast2D")
 
 [node name="EnemyNoticePlayer" type="AudioStreamPlayer" parent="StateMachine/Chase"]
 stream = ExtResource("5_tymcq")
 
-[node name="Patrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator")]
+[node name="Patrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator", "ray_cast")]
 script = ExtResource("5_imk81")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
+ray_cast = NodePath("../../RayCast2D")
 
 [node name="PatrolSoundPlayer" type="Timer" parent="StateMachine/Patrol"]
 wait_time = 4.0
@@ -196,11 +198,12 @@ wait_time = 4.0
 stream = ExtResource("7_gv5bh")
 max_distance = 300.0
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "enemy", "animator")]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("AttackHitCooldown", "enemy", "animator", "ray_cast")]
 script = ExtResource("6_tavy4")
 AttackHitCooldown = NodePath("../../AttackHitCooldown")
 enemy = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
+ray_cast = NodePath("../../RayCast2D")
 
 [node name="AttackHitCooldown" type="Timer" parent="."]
 wait_time = 0.5
