@@ -1099,6 +1099,7 @@ stream = ExtResource("5_pf6jy")
 volume_db = 5.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0605303, 0.0605303, 0.0605304, 1)
 
 [node name="WinCheck" type="Area2D" parent="."]
@@ -1215,6 +1216,23 @@ scale = Vector2(0.0205549, 0.0205549)
 z_index = 1
 position = Vector2(432, -68)
 scale = Vector2(0.0322962, 0.0322962)
+
+[node name="Wood17" parent="Woods" instance=ExtResource("7_8ehwn")]
+z_index = 1
+position = Vector2(189, -261)
+scale = Vector2(0.0322962, 0.0322962)
+
+[node name="Wood5" parent="Woods" instance=ExtResource("7_8ehwn")]
+position = Vector2(377, 467)
+scale = Vector2(0.0205549, 0.0205549)
+
+[node name="Wood8" parent="Woods" instance=ExtResource("7_8ehwn")]
+position = Vector2(56, 310)
+scale = Vector2(0.0205549, 0.0205549)
+
+[node name="Wood9" parent="Woods" instance=ExtResource("7_8ehwn")]
+position = Vector2(0.999989, -115)
+scale = Vector2(0.0205549, 0.0205549)
 
 [connection signal="body_entered" from="WinCheck" to="." method="_on_win_check_body_entered"]
 [connection signal="body_entered" from="WinCheck" to="WinCheck" method="_on_body_entered"]
