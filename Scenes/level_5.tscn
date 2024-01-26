@@ -1099,7 +1099,6 @@ stream = ExtResource("5_pf6jy")
 volume_db = 5.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0605303, 0.0605303, 0.0605304, 1)
 
 [node name="WinCheck" type="Area2D" parent="."]
