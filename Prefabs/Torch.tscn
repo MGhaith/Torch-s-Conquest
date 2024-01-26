@@ -167,6 +167,7 @@ script = ExtResource("4_c0j4l")
 player = NodePath("../../../..")
 
 [node name="LightNodes" type="Node2D" parent="."]
+position = Vector2(0, -13)
 
 [node name="Shadow" type="PointLight2D" parent="LightNodes"]
 color = Color(0.945098, 0.262745, 0.164706, 1)
