@@ -1,17 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmoddp4uc0wuu"]
+[gd_scene load_steps=15 format=3 uid="uid://bmoddp4uc0wuu"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelScript.gd" id="1_4gwk2"]
 [ext_resource type="PackedScene" uid="uid://dyvfu64r7c3rm" path="res://Prefabs/Torch.tscn" id="1_c0evi"]
-[ext_resource type="PackedScene" uid="uid://bq4vupof37t78" path="res://Prefabs/Exit.tscn" id="2_vmuq7"]
 [ext_resource type="PackedScene" uid="uid://bsvckevjwexab" path="res://Prefabs/Pillar.tscn" id="3_4ld1e"]
 [ext_resource type="PackedScene" uid="uid://c7c3x0bka3wot" path="res://Prefabs/Enemy.tscn" id="3_pyxjf"]
-[ext_resource type="AudioStream" uid="uid://dqqkiifuxp7lr" path="res://Assets/Audio/dungeon002_0.ogg" id="3_xu57s"]
 [ext_resource type="PackedScene" uid="uid://bq4vupof37t78" path="res://Prefabs/Exit.tscn" id="3_yu6oo"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/FinishLevel.gd" id="4_nbs77"]
 [ext_resource type="PackedScene" uid="uid://b6vyrmijpoc2v" path="res://Prefabs/Key.tscn" id="5_25xcw"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="5_31yyw"]
 [ext_resource type="PackedScene" uid="uid://issub7jsl3oj" path="res://Prefabs/Wood.tscn" id="6_8fhp0"]
-[ext_resource type="AudioStream" uid="uid://bxwt5a60p3vx4" path="res://Assets/Audio/untitled.wav" id="8_4lxou"]
 [ext_resource type="PackedScene" uid="uid://bwu6j78xhohru" path="res://Prefabs/interactable_torch.tscn" id="13_oqhmc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8x5ma"]
@@ -31,10 +28,7 @@ position = Vector2(615.204, 446.972)
 script = ExtResource("1_4gwk2")
 next_level_name = "1"
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_vmuq7")]
-player = NodePath("../Torch")
-ost = ExtResource("3_xu57s")
-menuOst = ExtResource("8_4lxou")
+[node name="GameManager" parent="." instance=ExtResource("3_yu6oo")]
 
 [node name="level" type="Node" parent="."]
 
