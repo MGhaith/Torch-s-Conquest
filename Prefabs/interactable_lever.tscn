@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/interactable_lever.gd" id="1_xchnp"]
 [ext_resource type="AudioStream" uid="uid://qrp13e56e6me" path="res://Assets/Audio/bridge.ogg" id="2_8bhud"]
-[ext_resource type="Texture2D" uid="uid://d1633yi4lv4wi" path="res://Assets/object_lever_1.png" id="2_q8okw"]
+[ext_resource type="Texture2D" uid="uid://d3bmrnpcarngu" path="res://Assets/object_lever_1.png" id="2_q8okw"]
 [ext_resource type="PackedScene" uid="uid://7gvd8vm6bfjl" path="res://Prefabs/interaction_area.tscn" id="2_wlmy6"]
 [ext_resource type="AudioStream" uid="uid://daff4y8mg062p" path="res://Assets/Audio/wall open.mp3" id="3_4p71o"]
 [ext_resource type="Texture2D" uid="uid://bbbchjg4lcjfl" path="res://Assets/object_lever_2.png" id="3_10fk8"]
 [ext_resource type="Texture2D" uid="uid://bjrhmdi45f8jt" path="res://Assets/object_lever_4.png" id="4_8m7is"]
-[ext_resource type="Texture2D" uid="uid://423xujfrwx40" path="res://Assets/object_lever_5.png" id="5_1b0eb"]
+[ext_resource type="Texture2D" uid="uid://dju5ogpcelskw" path="res://Assets/object_lever_5.png" id="5_1b0eb"]
 [ext_resource type="AudioStream" uid="uid://bne3qjwumcowt" path="res://Assets/Audio/lever.wav" id="7_4adof"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_711pv"]
