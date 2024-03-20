@@ -4,6 +4,7 @@ class_name GameManager
 
 signal toggle_game_paused(is_paused: bool)
 
+#
 var game_paused : bool = false:
 	get:
 		return game_paused
@@ -13,7 +14,7 @@ var game_paused : bool = false:
 			get_tree().paused = game_paused
 			emit_signal("toggle_game_paused", game_paused)
 
-var passedHealth : float
+var passedHealth : float # Health value that passes between levels
 
 @export var deathSFX : AudioStreamMP3
 @export var dungeonSFX : AudioStreamOggVorbis
@@ -27,6 +28,7 @@ func _ready():
 	passedHealth = 100
 	current_level.level_changed.connect(handle_level_changed)
 
+# Input for the pause menu
 func _input(event : InputEvent):
 	if event.is_action_pressed("Pause"):
 		game_paused = !game_paused
@@ -34,11 +36,14 @@ func _input(event : InputEvent):
 func _process(_delta):
 	if passedHealth == 0 && !played:
 		played = true
+		
+		# Death Audio
 		audioPlayer.stop()
 		audioPlayer.volume_db = 0
 		audioPlayer.set_stream(deathSFX)
 		audioPlayer.play()
 
+# Changing the level code
 func handle_level_changed(next_level_name : String):
 	var next_level
 	var target_level_name
